@@ -152,32 +152,37 @@ def evaluate_model_diagnostics(
         mean_test_oos_pred_ll = float(np.mean(val_filter_res["pred_log_likelihoods"]))
 
     # 4. State persistence & Expected stay duration
+    # In a discrete-time Markov chain, expected stay duration in state k is E[T_k] = 1 / (1 - A_kk) bars.
+    # For M15 bars, duration in hours is E[T_k] * 0.25.
     diag_trans = np.diag(model.transmat_)
     expected_duration_bars = [
         float(1.0 / max(1e-4, 1.0 - p)) for p in diag_trans
     ]
     expected_duration_hours = [b * 0.25 for b in expected_duration_bars]
 
-    # 4. State occupancy (Validation set)
+    # 5. State occupancy (Validation set)
+    # Distinguish soft probability occupancy (mean of P(S_t=k|x_{1:t})) from hard argmax occupancy
     val_probs = val_filter_res["filtered_probs"]
     val_pred_states = np.argmax(val_probs, axis=1)
     mean_occupancy_prob = np.mean(val_probs, axis=0).tolist()
     hard_occupancy = [
         float(np.mean(val_pred_states == k)) for k in range(K)
     ]
+    min_soft_occupancy = float(np.min(mean_occupancy_prob))
+    min_hard_occupancy = float(np.min(hard_occupancy))
 
-    # 5. Switching frequency (fraction of bars where argmax state changes)
+    # 6. Switching frequency (fraction of bars where argmax state changes)
     state_switches = np.sum(val_pred_states[1:] != val_pred_states[:-1])
     switch_frequency = float(state_switches / max(1, N_val - 1))
 
-    # 6. Degenerate state detection
+    # 7. Degenerate state detection
     collapsed_states = []
     for k in range(K):
-        # Collapse if hard occupancy < 1.0% or probability occupancy < 1.0%
+        # Collapse if hard occupancy < 1.0% or soft probability occupancy < 1.0%
         if hard_occupancy[k] < 0.01 or mean_occupancy_prob[k] < 0.01:
             collapsed_states.append(k)
 
-    min_occupancy = float(np.min(mean_occupancy_prob))
+    min_occupancy = min_soft_occupancy
     min_persistence = float(np.min(diag_trans))
     max_persistence = float(np.max(diag_trans))
 
@@ -217,6 +222,8 @@ def evaluate_model_diagnostics(
         "expected_duration_hours": expected_duration_hours,
         "mean_occupancy_prob": mean_occupancy_prob,
         "hard_occupancy": hard_occupancy,
+        "min_soft_occupancy": min_soft_occupancy,
+        "min_hard_occupancy": min_hard_occupancy,
         "switch_frequency": switch_frequency,
         "collapsed_states": collapsed_states,
         "min_occupancy": min_occupancy,

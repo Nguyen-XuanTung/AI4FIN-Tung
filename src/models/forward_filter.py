@@ -81,22 +81,23 @@ class ForwardFilter:
         self.log_stat_dist = np.log(np.maximum(self.stat_dist, 1e-12))
 
         # Precompute emission constants and precision matrices for ultra-fast evaluation
-        cov_reg_mat = getattr(self.model, "_cov_reg_mat", np.eye(self.D) * self.model.cov_reg)
-        cov_reg_diag = getattr(self.model, "_cov_reg_diag", np.ones(self.D) * self.model.cov_reg)
+        # Uses model.covars_ directly, consistent with GaussianHMM._compute_log_emissions()
         self._emission_consts = np.empty(self.K, dtype=np.float64)
         self._precision_mats = []
         for k in range(self.K):
             if model.covariance_type == "full":
-                cov = 0.5 * (model.covars_[k] + model.covars_[k].T) + cov_reg_mat
+                cov = 0.5 * (model.covars_[k] + model.covars_[k].T)
                 sign, logdet = np.linalg.slogdet(cov)
-                if sign <= 0:
-                    cov += cov_reg_mat * 10.0
-                    sign, logdet = np.linalg.slogdet(cov)
-                inv_cov = np.linalg.pinv(cov)
+                if sign <= 0 or not np.isfinite(logdet):
+                    cov_safe = cov + np.eye(self.D) * 1e-9
+                    sign, logdet = np.linalg.slogdet(cov_safe)
+                    inv_cov = np.linalg.pinv(cov_safe)
+                else:
+                    inv_cov = np.linalg.inv(cov)
                 self._precision_mats.append(inv_cov)
                 self._emission_consts[k] = -0.5 * self.D * np.log(2.0 * np.pi) - 0.5 * logdet
             else:
-                var = np.maximum(model.covars_[k], cov_reg_diag)
+                var = np.maximum(model.covars_[k], 1e-12)
                 logdet = np.sum(np.log(var))
                 self._precision_mats.append(1.0 / var)
                 self._emission_consts[k] = -0.5 * self.D * np.log(2.0 * np.pi) - 0.5 * logdet

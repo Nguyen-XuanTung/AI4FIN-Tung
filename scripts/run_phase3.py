@@ -322,16 +322,24 @@ def write_phase3_markdown_report(
     report.append(f"2. **Evaluation Split Rigor & Metric Clarification:**")
     report.append(f"   - On any single dataset partition, the sequence log-likelihood and the sum of causal one-step predictive log-likelihoods are mathematically identical by the probability chain rule: $\\sum_{{t=1}}^T \\ln P(x_t \\mid x_{{1:t-1}}) \\equiv \\ln P(x_{{1:T}})$.")
     report.append(f"   - To ensure strict separation between validation model selection and true out-of-sample evaluation, `val_log_likelihood` is reported on the Validation partition (Aug 24 to Oct 27, 2023) and `test_oos_predictive_ll` is evaluated strictly on the chronologically held-out Test partition (Oct 27 to Dec 29, 2023).")
-    report.append(f"3. **Optimal Baseline State Count ($K=3$ for Config 2):**")
+    # Extract dynamic properties of selected model
+    diag_a = best_config2_model["diag_transmat"]
+    dur_bars = best_config2_model["expected_duration_bars"]
+    dur_hours = best_config2_model["expected_duration_hours"]
+    soft_occ = best_config2_model["mean_occupancy_prob"]
+    hard_occ = best_config2_model["hard_occupancy"]
+
     k2_rows = results_df[results_df['model_name'] == 'Config_2_MinimalOrthogonal_K2']
     k3_rows = results_df[results_df['model_name'] == 'Config_2_MinimalOrthogonal_K3']
     k2_bic = k2_rows['bic'].values[0] if len(k2_rows) > 0 else 0.0
     k3_bic = k3_rows['bic'].values[0] if len(k3_rows) > 0 else 0.0
+
+    report.append(f"3. **Optimal Baseline State Count ($K={best_config2_model['n_components']}$ for Config 2):**")
     report.append(f"   - $K=3$ achieves a dramatic improvement in both Validation and Test Predictive Log-Likelihood over $K=2$ (BIC drops from `{k2_bic:.1f}` to `{k3_bic:.1f}`).")
-    report.append(f"   - All 3 states demonstrate high diagonal persistence ($A_{{ii}} \\in [0.88, 0.93]$), corresponding to average regime durations of 9 to 14 bars (2.25 to 3.5 hours).")
-    report.append(f"   - Minimum state occupancy is healthy at `{best_config2_model['min_occupancy']*100:.1f}%` (no collapsed states).")
+    report.append(f"   - Selected model diagonal persistence values $A_{{kk}}$ are directly derived from the transition matrix: `[{', '.join([f'{p:.4f}' for p in diag_a])}]`, corresponding to expected stay durations of `{min(dur_bars):.1f}` to `{max(dur_bars):.1f}` M15 bars (`{min(dur_hours):.2f}` to `{max(dur_hours):.2f}` hours).")
+    report.append(f"   - Validation state occupancy confirms robust non-degenerate states: soft probability occupancy (`mean_occupancy_prob`) ranges from `{min(soft_occ)*100:.1f}%` to `{max(soft_occ)*100:.1f}%`, while hard argmax occupancy (`hard_occupancy`) ranges from `{min(hard_occ)*100:.1f}%` to `{max(hard_occ)*100:.1f}%`.")
     report.append(f"   - While $K=4$ and $K=5$ further decrease AIC, they exhibit diminishing returns in Test OOS predictive log-likelihood and introduce higher switching frequencies and sub-state fragmentation.")
-    report.append(f"4. **Volatility Units & Regularization Resolution:** Feature-scaled covariance regularization protects empirical return variances without artificial inflation, resolving the earlier reporting artifact. Both Return Volatility ($r_{{OC}}$ std) and Expected M15 Range ($\\exp(\\mu_{{\\text{{log\\_vol}}}}) \\times 10,000$) are reported consistently in basis points (bps).")
+    report.append(f"4. **Covariance Regularization & Volatility Units:** Consistent covariance regularization is applied strictly in parameter estimation (M-step) and reused uniformly across training, scoring, and forward filtering inference without double-regularization. Both Return Volatility ($r_{{OC}}$ std) and Expected M15 Range ($\\exp(\\mu_{{\\text{{log\\_vol}}}}) \\times 10,000$) are reported consistently in basis points (bps).")
     report.append(f"5. **Literature Benchmark Comparison (`Config_1_Paper1`):** Paper 1's 3D formulation ($[r_{{OC}}, r_{{OH}}, r_{{OL}}]$) reflects daily equity structures but suffers from heavy non-negative skewness and strong collinearity between $r_{{OH}}$ and $r_{{OL}}$, requiring higher parameter counts ($p=35$ vs $p=23$ for $K=3$) with lower state stability.")
     report.append(f"6. **Data Coverage Limitation:** Because only 2023 data was evaluated, out-of-sample robustness across multi-year macro cycles cannot yet be asserted. Full walk-forward validation (Phase 7) across multiple years is required before generalizing regime characteristics.")
     report.append("")
@@ -339,10 +347,17 @@ def write_phase3_markdown_report(
     report.append("## 2. Model Comparison Table (Config 2, Config 1, Config 5 across K=2..6)\n")
     cols_to_show = [
         "model_name", "n_components", "n_params", "train_log_likelihood", "val_log_likelihood",
-        "test_oos_predictive_ll", "aic", "bic", "switch_frequency", "min_occupancy", "is_stable"
+        "test_oos_predictive_ll", "aic", "bic", "switch_frequency", "min_soft_occupancy", "min_hard_occupancy", "is_stable"
     ]
-    sub_df = results_df[cols_to_show].copy()
-    sub_df["min_occupancy"] = (sub_df["min_occupancy"] * 100).round(1).astype(str) + "%"
+    sub_df = results_df.copy()
+    if "min_soft_occupancy" not in sub_df.columns:
+        sub_df["min_soft_occupancy"] = sub_df["min_occupancy"]
+    if "min_hard_occupancy" not in sub_df.columns:
+        sub_df["min_hard_occupancy"] = sub_df["hard_occupancy"].apply(lambda h: min(h) if isinstance(h, list) else 0.0)
+
+    sub_df = sub_df[cols_to_show].copy()
+    sub_df["min_soft_occupancy"] = (sub_df["min_soft_occupancy"] * 100).round(1).astype(str) + "%"
+    sub_df["min_hard_occupancy"] = (sub_df["min_hard_occupancy"] * 100).round(1).astype(str) + "%"
     sub_df["switch_frequency"] = (sub_df["switch_frequency"] * 100).round(1).astype(str) + "%"
     sub_df["train_log_likelihood"] = sub_df["train_log_likelihood"].round(1)
     sub_df["val_log_likelihood"] = sub_df["val_log_likelihood"].round(1)
@@ -376,12 +391,14 @@ def write_phase3_markdown_report(
     report.append("```")
     report.append("")
 
-    report.append("### Regime State Characteristics:")
+    report.append("### Regime State Characteristics (Evaluated on Validation Partition):")
     means = np.array(best_config2_model["state_means"])
     covars = np.array(best_config2_model["state_covars"])
     diag_a = best_config2_model["diag_transmat"]
+    dur_b = best_config2_model["expected_duration_bars"]
     dur_h = best_config2_model["expected_duration_hours"]
-    occ = best_config2_model["hard_occupancy"]
+    soft_occ = best_config2_model["mean_occupancy_prob"]
+    hard_occ = best_config2_model["hard_occupancy"]
 
     for k in range(best_config2_model["n_components"]):
         mean_ret_bps = means[k, 0] * 10000.0
@@ -390,8 +407,9 @@ def write_phase3_markdown_report(
         std_lvol = np.sqrt(covars[k, 1, 1])
         exp_range_bps = np.exp(mean_lvol) * 10000.0
         report.append(f"#### State {k}:")
-        report.append(f"- **Expected Stay Duration:** `{dur_h[k]:.2f} hours` (`{best_config2_model['expected_duration_bars'][k]:.1f} M15 bars`) | **Persistence ($A_{{kk}}$):** `{diag_a[k]:.3f}`")
-        report.append(f"- **Validation Occupancy:** `{occ[k]*100:.1f}%`")
+        report.append(f"- **Expected Stay Duration:** `{dur_h[k]:.2f} hours` (`{dur_b[k]:.1f} M15 bars`, formula $1 / (1 - A_{{kk}})$) | **Persistence ($A_{{kk}}$):** `{diag_a[k]:.4f}`")
+        report.append(f"- **Validation Soft Probability Occupancy (`mean_occupancy_prob`):** `{soft_occ[k]*100:.1f}%`")
+        report.append(f"- **Validation Hard Argmax Occupancy (`hard_occupancy`):** `{hard_occ[k]*100:.1f}%`")
         report.append(f"- **Return Distribution ($r_{{OC}}$):** Mean = `{mean_ret_bps:+.2f} bps`, Volatility (std) = `{std_ret_bps:.2f} bps`")
         report.append(f"- **Log-Volatility ($\\ln(\\text{{range}})$):** Mean = `{mean_lvol:.2f}` (Expected M15 Range = `{exp_range_bps:.2f} bps`), Std = `{std_lvol:.2f}`")
         report.append("")
@@ -402,12 +420,13 @@ def write_phase3_markdown_report(
     report.append("- **Zero Look-Ahead Bias:** Validated via unit test `test_temporal_causality_invariance`. The filtered probability $P(S_t \\mid x_{1:t})$ is strictly a function of past and current bars.")
     report.append("")
 
-    report.append("## 5. Limitations & Recommendations for Phase 4")
-    report.append("1. **Single-Year Time Horizon Limitation:** All results are based solely on 2023 data. While the chronological 60/20/20 split ensures no look-ahead leakage within 2023, regime properties may shift during different macroeconomic years (e.g. 2020 COVID shocks, 2022 rate hikes). Do not assume single-year parameters are globally robust.")
-    report.append("2. **Recommendation for Phase 4 (GMM-HMM Comparison):**")
-    report.append("   - Maintain `Config_2_MinimalOrthogonal` ($K=3$) as the primary benchmark.")
-    report.append("   - In Phase 4, test whether multivariate Gaussian Mixture Emissions ($M \\in \\{2, 3\\}$) offer higher Sequential OOS Predictive Log-Likelihood than the single-Gaussian baseline.")
-    report.append("   - Test whether GMM emissions adequately model the remaining kurtosis in $r_{OC}$.")
+    report.append("## 5. Research Integrity & Explicit Limitations")
+    report.append("1. **Single-Year Time Horizon:** All empirical results are evaluated strictly on EURUSD M15 data from 2023. No claim of multi-year robustness is justified at this stage; out-of-sample stability across macroeconomic regimes (e.g., 2020 pandemic shocks, 2022 rate hike cycles) requires full multi-year walk-forward validation in Phase 7.")
+    report.append("2. **Statistical Regimes vs. Economic Mechanisms:** The identified hidden states are statistical clusters defined by joint Gaussian return-volatility distributions, not proven economic states or causal macro explanations.")
+    report.append("3. **Non-Directional Predictive Nature:** Filtered regime probabilities describe the current latent market state (e.g., quiet consolidation vs. turbulent expansion). They do not predict future directional price changes and do not guarantee trading strategy profitability.")
+    report.append("4. **Recommendation for Phase 4 (GMM-HMM Comparison):**")
+    report.append("   - Retain `Config_2_MinimalOrthogonal` ($K=3$) as the candidate baseline benchmark.")
+    report.append("   - In Phase 4, test whether multivariate Gaussian Mixture emissions ($M \\in \\{2, 3\\}$) offer superior out-of-sample predictive log-likelihood and better capture residual leptokurtosis in $r_{OC}$.")
 
     with open(output_path, "w", encoding="utf-8") as f:
         f.write("\n".join(report))

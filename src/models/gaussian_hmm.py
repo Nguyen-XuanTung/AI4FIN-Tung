@@ -141,7 +141,7 @@ class GaussianHMM:
         if self.covariance_type == "full":
             self.covars_ = np.zeros((K, D, D))
             for k in range(K):
-                self.covars_[k] = global_cov + self._cov_reg_mat
+                self.covars_[k] = 0.5 * (global_cov + global_cov.T) + self._cov_reg_mat
         else:
             diag_var = np.diag(global_cov) if global_cov.ndim == 2 else np.ones(D) * float(global_cov)
             self.covars_ = np.zeros((K, D))
@@ -152,6 +152,9 @@ class GaussianHMM:
         """
         Compute log b_j(x_t) for all t=1..N and j=1..K.
 
+        Uses self.covars_ directly, which already incorporates feature-scaled
+        covariance regularization from initialization and M-step updates.
+
         Returns
         -------
         log_b : np.ndarray, shape (N, K)
@@ -160,23 +163,20 @@ class GaussianHMM:
         K = self.n_components
         log_b = np.empty((N, K), dtype=np.float64)
 
-        cov_reg_mat = getattr(self, "_cov_reg_mat", np.eye(D) * self.cov_reg)
-        cov_reg_diag = getattr(self, "_cov_reg_diag", np.ones(D) * self.cov_reg)
-
         for k in range(K):
             mean = self.means_[k]
             if self.covariance_type == "full":
-                cov = self.covars_[k]
-                cov = 0.5 * (cov + cov.T) + cov_reg_mat
+                cov = 0.5 * (self.covars_[k] + self.covars_[k].T)
                 try:
-                    mvn = multivariate_normal(mean=mean, cov=cov, allow_singular=True)
+                    mvn = multivariate_normal(mean=mean, cov=cov, allow_singular=False)
                     log_b[:, k] = mvn.logpdf(X)
                 except Exception:
-                    diag_cov = np.diag(np.diag(cov) + cov_reg_diag)
-                    mvn = multivariate_normal(mean=mean, cov=diag_cov, allow_singular=True)
+                    # Numerical safeguard only if covariance becomes singular
+                    cov_safe = cov + np.eye(D) * 1e-9
+                    mvn = multivariate_normal(mean=mean, cov=cov_safe, allow_singular=True)
                     log_b[:, k] = mvn.logpdf(X)
             else:
-                cov_diag = np.maximum(self.covars_[k], cov_reg_diag)
+                cov_diag = np.maximum(self.covars_[k], 1e-12)
                 mvn = multivariate_normal(mean=mean, cov=np.diag(cov_diag), allow_singular=True)
                 log_b[:, k] = mvn.logpdf(X)
 
@@ -296,12 +296,21 @@ class GaussianHMM:
                     diff = X - self.means_[k]  # (N, D)
                     weighted_diff = diff * gamma[:, k, None]  # (N, D)
                     cov_k = (weighted_diff.T @ diff) / max(gamma_sum[k], 1e-6)
-                    self.covars_[k] = cov_k + cov_reg_mat
+                    self.covars_[k] = 0.5 * (cov_k + cov_k.T) + cov_reg_mat
             else:
                 for k in range(K):
                     diff = X - self.means_[k]
                     var_k = (gamma[:, k, None] * (diff ** 2)).sum(axis=0) / max(gamma_sum[k], 1e-6)
                     self.covars_[k] = var_k + cov_reg_diag
+
+        # Ensure log-likelihood accurately corresponds to the final parameters stored in self.
+        # If the loop ended via convergence break before the M-step, score_history[-1]
+        # already reflects the current parameters. If the loop executed an M-step at the
+        # end of the iteration, recalculate the score for the newly updated parameters.
+        final_ll = self.score(X, lengths)
+        if len(score_history) == 0 or abs(final_ll - score_history[-1]) > 1e-9:
+            score_history.append(final_ll)
+        total_log_likelihood = final_ll
 
         return total_log_likelihood, score_history, converged
 
@@ -448,6 +457,7 @@ class GaussianHMM:
             "transmat": self.transmat_.tolist() if self.transmat_ is not None else None,
             "means": self.means_.tolist() if self.means_ is not None else None,
             "covars": self.covars_.tolist() if self.covars_ is not None else None,
+            "cov_reg_diag": self._cov_reg_diag.tolist() if hasattr(self, "_cov_reg_diag") else None,
         }
 
     @classmethod
@@ -470,4 +480,7 @@ class GaussianHMM:
             model.means_ = np.array(data["means"], dtype=np.float64)
         if data.get("covars") is not None:
             model.covars_ = np.array(data["covars"], dtype=np.float64)
+        if data.get("cov_reg_diag") is not None:
+            model._cov_reg_diag = np.array(data["cov_reg_diag"], dtype=np.float64)
+            model._cov_reg_mat = np.diag(model._cov_reg_diag)
         return model

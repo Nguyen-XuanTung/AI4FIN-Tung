@@ -255,3 +255,114 @@ def test_gaussian_hmm_fit_synthetic():
     means_sorted = np.sort(model.means_.ravel())
     assert means_sorted[0] < 0.0
     assert means_sorted[1] > 0.0
+
+
+def test_emission_likelihood_model_and_forward_filter_agree(fitted_toy_model):
+    """
+    Verify that emission log-likelihoods computed by GaussianHMM and ForwardFilter
+    agree numerically across all states and timesteps without double-regularization.
+    """
+    rng = np.random.RandomState(42)
+    X = rng.normal(0, 1, size=(50, 2))
+
+    # 1. Model emission log-likelihoods
+    hmm_log_b = fitted_toy_model._compute_log_emissions(X)
+
+    # 2. ForwardFilter emission log-likelihoods
+    engine = ForwardFilter(model=fitted_toy_model)
+    ff_log_b = np.array([engine.compute_single_log_emission(x) for x in X])
+
+    # Check exact numerical agreement
+    np.testing.assert_allclose(
+        hmm_log_b,
+        ff_log_b,
+        rtol=1e-10,
+        atol=1e-10,
+        err_msg="GaussianHMM and ForwardFilter emission likelihoods disagree!",
+    )
+
+    # 3. Serialization reproducibility: loaded model computes identical score
+    d = fitted_toy_model.to_dict()
+    loaded_model = GaussianHMM.from_dict(d)
+    np.testing.assert_allclose(
+        fitted_toy_model.score(X),
+        loaded_model.score(X),
+        atol=1e-10,
+        err_msg="Deserialized GaussianHMM score does not match original model!",
+    )
+
+
+def test_restart_selection_best_log_likelihood_matches_score():
+    """
+    Regression test: verify that best_log_likelihood_ matches score(X, lengths)
+    for the final parameters saved across random restarts.
+    """
+    rng = np.random.RandomState(42)
+    X = rng.normal(loc=[0.0, -7.0], scale=[0.001, 0.5], size=(200, 2))
+    lengths = [100, 100]
+
+    model = GaussianHMM(n_components=3, covariance_type="full", n_iter=15, random_state=42)
+    model.fit(X, lengths=lengths, n_restarts=3)
+
+    final_eval_score = model.score(X, lengths=lengths)
+    np.testing.assert_allclose(
+        model.best_log_likelihood_,
+        final_eval_score,
+        rtol=1e-6,
+        atol=1e-5,
+        err_msg="best_log_likelihood_ must match score(X, lengths) for saved parameters!",
+    )
+
+
+def test_expected_duration_and_occupancy_diagnostics():
+    """
+    Verify mathematical correctness of expected stay duration (1 / (1 - A_kk))
+    and distinguish soft probability occupancy from hard argmax occupancy.
+    """
+    from src.models.evaluation import evaluate_model_diagnostics
+
+    # Construct synthetic model with known transition matrix
+    model = GaussianHMM(n_components=2, covariance_type="full")
+    model.n_features_ = 1
+    model.startprob_ = np.array([0.5, 0.5])
+    model.transmat_ = np.array([[0.80, 0.20], [0.10, 0.90]])
+    model.means_ = np.array([[-1.0], [1.0]])
+    model.covars_ = np.array([[[0.1]], [[0.1]]])
+    model.converged_ = True
+    model.n_iter_done_ = 5
+
+    # Expected durations:
+    # State 0: 1 / (1 - 0.8) = 5.0 bars = 1.25 hours
+    # State 1: 1 / (1 - 0.9) = 10.0 bars = 2.5 hours
+    diag = np.diag(model.transmat_)
+    exp_bars = [1.0 / (1.0 - p) for p in diag]
+    assert np.isclose(exp_bars[0], 5.0)
+    assert np.isclose(exp_bars[1], 10.0)
+
+    # Evaluate on synthetic DataFrame
+    rng = np.random.RandomState(123)
+    # Generate 60 bars in state 0, 40 bars in state 1
+    s0 = rng.normal(-1.0, 0.1, size=(60, 1))
+    s1 = rng.normal(1.0, 0.1, size=(40, 1))
+    X = np.vstack([s0, s1])
+    df = pd.DataFrame({"feat": X.ravel(), "timestamp": pd.date_range("2023-01-01", periods=100, freq="15min", tz="UTC")})
+
+    diag_res = evaluate_model_diagnostics(
+        model=model,
+        train_df=df,
+        val_df=df,
+        feature_cols=["feat"],
+        model_name="TestDiagModel",
+    )
+
+    # Verify expected durations match formula
+    np.testing.assert_allclose(diag_res["expected_duration_bars"], [5.0, 10.0])
+    np.testing.assert_allclose(diag_res["expected_duration_hours"], [1.25, 2.5])
+
+    # Verify soft and hard occupancies both sum to 1.0
+    soft_occ = np.array(diag_res["mean_occupancy_prob"])
+    hard_occ = np.array(diag_res["hard_occupancy"])
+    assert np.isclose(soft_occ.sum(), 1.0)
+    assert np.isclose(hard_occ.sum(), 1.0)
+    assert len(soft_occ) == 2
+    assert len(hard_occ) == 2
