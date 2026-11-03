@@ -57,6 +57,55 @@ def calculate_num_free_params(
     return startprob_params + transmat_params + mean_params + cov_params
 
 
+def calculate_num_free_params_gmm(
+    n_components: int,
+    n_mix: int,
+    n_features: int,
+    covariance_type: str = "full",
+) -> int:
+    """
+    Calculate the exact number of free continuous parameters in a GMM-HMM.
+
+    Parameters
+    ----------
+    n_components : int
+        Number of hidden states (K).
+    n_mix : int
+        Number of Gaussian mixture components per state (M).
+    n_features : int
+        Observation dimension (D).
+    covariance_type : str
+        'full' or 'diag'.
+
+    Returns
+    -------
+    num_params : int
+    """
+    K = n_components
+    M = n_mix
+    D = n_features
+
+    # Initial state probabilities: K - 1
+    startprob_params = K - 1
+
+    # Transition matrix: K * (K - 1)
+    transmat_params = K * (K - 1)
+
+    # Mixture weights: K * (M - 1) (each state's mixture weights sum to 1)
+    weight_params = K * (M - 1)
+
+    # Emission means: K * M * D
+    mean_params = K * M * D
+
+    # Emission covariances:
+    if covariance_type == "full":
+        cov_params = K * M * (D * (D + 1) // 2)
+    else:
+        cov_params = K * M * D
+
+    return startprob_params + transmat_params + weight_params + mean_params + cov_params
+
+
 def compute_information_criteria(
     log_likelihood: float,
     n_samples: int,
@@ -75,7 +124,7 @@ def compute_information_criteria(
 
 
 def evaluate_model_diagnostics(
-    model: GaussianHMM,
+    model: Union[GaussianHMM, Any],
     train_df: pd.DataFrame,
     val_df: pd.DataFrame,
     feature_cols: List[str],
@@ -83,19 +132,19 @@ def evaluate_model_diagnostics(
     val_lengths: Optional[List[int]] = None,
     test_df: Optional[pd.DataFrame] = None,
     test_lengths: Optional[List[int]] = None,
-    model_name: str = "GaussianHMM",
+    model_name: str = "Model",
 ) -> Dict:
     """
-    Comprehensive diagnostic evaluation of a fitted Gaussian HMM.
+    Comprehensive diagnostic evaluation of a fitted Gaussian HMM or GMM-HMM.
 
     Parameters
     ----------
-    model : GaussianHMM
-        Fitted Gaussian HMM.
+    model : Union[GaussianHMM, GMMHMM]
+        Fitted Gaussian HMM or GMM-HMM.
     train_df : pd.DataFrame
         Training dataset (In-sample parameter estimation).
     val_df : pd.DataFrame
-        Validation dataset (Hyperparameter tuning and K selection).
+        Validation dataset (Hyperparameter tuning and model selection).
     feature_cols : List[str]
         List of feature column names.
     train_lengths : Optional[List[int]]
@@ -120,12 +169,19 @@ def evaluate_model_diagnostics(
     N_val = len(val_df)
     N_test = len(test_df) if test_df is not None else N_val
 
+    is_gmm = hasattr(model, "weights_") and model.weights_ is not None
+    n_mix = getattr(model, "n_mix", 1) if is_gmm else 1
+
     X_train = train_df[feature_cols].values
     X_val = val_df[feature_cols].values
     X_test = test_df[feature_cols].values if test_df is not None else X_val
 
     # 1. Parameter count & Information criteria
-    n_params = calculate_num_free_params(K, D, model.covariance_type)
+    if is_gmm:
+        n_params = calculate_num_free_params_gmm(K, n_mix, D, model.covariance_type)
+    else:
+        n_params = calculate_num_free_params(K, D, model.covariance_type)
+
     train_ll = model.score(X_train, lengths=train_lengths)
     val_ll = model.score(X_val, lengths=val_lengths)
 
@@ -230,6 +286,9 @@ def evaluate_model_diagnostics(
         "is_stable": is_stable,
         "startprob": model.startprob_.tolist() if model.startprob_ is not None else None,
         "transmat": model.transmat_.tolist() if model.transmat_ is not None else None,
+        "is_gmm": is_gmm,
+        "n_mix": n_mix,
+        "weights": model.weights_.tolist() if (is_gmm and model.weights_ is not None) else None,
         "state_means": model.means_.tolist() if model.means_ is not None else None,
         "state_covars": model.covars_.tolist() if model.covars_ is not None else None,
     }

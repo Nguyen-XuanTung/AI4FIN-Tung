@@ -97,11 +97,29 @@ Hệ thống không nhằm mục đích dự báo hướng đi của nến tiế
    - AIC/BIC chỉ đóng vai trò tiêu chí hỗ trợ trên tập In-sample.
    - Không mặc định sử dụng $K=3, M=3$. Giá trị này là các quyết định mang tính thực nghiệm cho dự án này.
 4. **Phương pháp, thuật toán & toán học:** GMM-HMM, Sequential OOS Log-Likelihood, Information Criteria.
-5. **Công cụ / Thư viện:** `hmmlearn`, Custom evaluation scripts.
+5. **Công cụ / Thư viện:** `src/models/gmm_hmm.py` (custom NumPy/SciPy Baum-Welch EM, LogSumExp, covariance regularization), Custom evaluation scripts.
 6. **Đầu ra mong đợi:** Candidate models, Model comparison report, Mô hình kiến trúc được chọn.
 7. **Tiêu chí hoàn thành:** Chọn mô hình cân bằng giữa OOS LL, khả năng diễn giải và chi phí tính toán. Không sử dụng một điểm số hỗn hợp tự chế.
 8. **Phụ thuộc:** Phase 3.
 9. **Rủi ro & Sai lầm thường gặp:** Tự động cho rằng GMM-HMM giải quyết được hoàn toàn các cú sốc tin tức.
+10. **Trạng thái thực hiện (Implementation Status): HOÀN THÀNH (COMPLETED)**
+    - **Kiểm tra rò rỉ dữ liệu (Leakage Audit):** Đã sửa đổi thuật toán chọn mô hình trong Phase 3 và Phase 4. Toàn bộ quyết định kiến trúc và siêu tham số được cố định strictly trên tập **Validation** (20%), tập **Test** (20%) chỉ được đánh giá duy nhất một lần sau khi đóng băng mô hình.
+    - **Kiểm tra khởi tạo ranh giới Test (Boundary Filter Initialization):** So sánh giữa khởi tạo bằng $\boldsymbol{\pi}$ và lan truyền posterior $\boldsymbol{\alpha}_{T_{\text{val}}}$ từ cuối Validation cho thấy độ chênh lệch chỉ $-1.65$ nats trên 4,168 nến ($-0.0004$ nats/nến), xác nhận filter hội tụ rất nhanh theo quan sát và ranh giới không làm sai lệch đánh giá OOS. Ghi nhận minh bạch hạn chế: tập Test 2023 từng được kiểm tra trong Phase 3, do đó việc kiểm định holdout hoàn toàn nguyên vẹn sẽ được thực hiện trên năm 2022/2024 ở Phase 7.
+    - **Kết quả thực nghiệm trên tập EURUSD M15 (2023):**
+      * `Gaussian_HMM_K3_M1` (Baseline): Val Pred LL = `24,894.4`, Test OOS LL = `24,760.7`, BIC = `-146,850.6`, SwFreq = `25.2%`, Min Soft Occ = `13.7%`, $p=23$.
+      * `GMM_HMM_K3_M2`: Val Pred LL = `25,361.8` ($+467.4$ nats), Test OOS LL = `25,286.8` ($+526.1$ nats), BIC = `-149,466.2`, SwFreq = `19.6%`, Min Soft Occ = `18.3%`, $p=41$.
+      * `GMM_HMM_K3_M3`: Val Pred LL = `25,993.2` ($+1,098.8$ nats), Test OOS LL = `25,928.3` ($+1,167.6$ nats), BIC = `-152,700.8`, SwFreq = `16.9%`, Min Soft Occ = `17.8%`, $p=59$.
+      * `GMM_HMM_K2_M2`: Val Pred LL = `24,935.3`, Test OOS LL = `24,837.1`, BIC = `-147,272.9`, SwFreq = `11.8%`, $p=25$.
+      * `GMM_HMM_K4_M2`: Val Pred LL = `25,596.3`, Min Soft Occ = `7.6%` (cảnh báo manh mún trạng thái), $p=59$.
+    - **Benchmark kiểm soát thời gian chạy thực tế (5 random seeds độc lập):**
+      * Thời gian huấn luyện (1 fit, 35 iters): M1 = $36.98\text{s} \pm 4.36\text{s}$, M2 = $34.80\text{s} \pm 0.07\text{s}$, M3 = $35.60\text{s} \pm 0.17\text{s}$. (Bác bỏ giả định trước đó về việc M2 chạy nhanh gấp 6 lần; thời gian huấn luyện tương đương nhau).
+      * Độ trễ suy luận từng nến (single-bar step latency): M1 = $35.0\ \mu\text{s}$, M2 = $58.8\ \mu\text{s}$, M3 = $64.2\ \mu\text{s}$ (rất nhỏ so với chu kỳ 15 phút của nến M15).
+      * Độ trễ theo lô (4,167 nến Validation): ~193 ms cho cả 3 mô hình.
+    - **Kiểm định Unit Test:** Toàn bộ 10/10 test case trong `tests/test_gmm_hmm.py` và 34/34 tests toàn dự án đều đạt 100%.
+    - **Kết luận kiến trúc & Lựa chọn mô hình:**
+      * Về mặt thống kê, **`GMM_HMM_K3_M3`** vượt trội trên toàn bộ tiêu chí (Val LL cao nhất, Test LL cao nhất, BIC tối ưu nhất).
+      * Về mặt vận hành & độ tinh gọn, **`GMM_HMM_K3_M2`** là phương án đánh đổi hiệu năng - độ phức tạp ($p=41$ so với $p=59$), có độ ổn định khởi tạo cao hơn rõ rệt qua các seed ($\sigma = 2.8$ nats so với $79.7$ nats).
+      * Quyết định: **Giữ cả hai mô hình `GMM_HMM_K3_M2` và `GMM_HMM_K3_M3`** làm ứng viên cho quy trình kiểm định Walk-Forward nhiều năm trong Phase 7. Báo cáo chi tiết: `data/reports/PHASE4_GMM_HMM_REPORT.md`.
 
 ### PHASE 5 — Real-time Inference, Model Versioning, and Retraining Management
 1. **Mục tiêu:** Quản lý quy trình cập nhật thời gian thực, xử lý quan sát khuyết, lưu trữ metadata bất biến, và khởi tạo lại mô hình khi retraining.

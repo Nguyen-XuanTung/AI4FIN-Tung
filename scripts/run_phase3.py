@@ -558,9 +558,9 @@ def main():
 
     results_df = pd.DataFrame(all_diagnostics)
 
-    # 4. Select Best Baseline Model from Config 2
+    # 4. Select Best Baseline Model from Config 2 strictly using Validation criteria (no Test leakage)
     # Criteria: Avoid collapsed states and excessive regime fragmentation (do not rely on AIC/BIC alone).
-    # Require robust occupancy (min_occupancy >= 10%) and moderate switching frequency (<= 30%).
+    # Require robust occupancy (min_occupancy >= 10%) and moderate switching frequency (<= 30%) on Validation.
     config2_results = [d for d in all_diagnostics if d["config_name"] == "Config_2_MinimalOrthogonal"]
     robust_candidates = [
         d for d in config2_results
@@ -573,13 +573,14 @@ def main():
     if not robust_candidates:
         robust_candidates = config2_results
 
-    # Among robust candidates, select model with highest Out-of-Sample Predictive Log-Likelihood
-    best_candidate_diag = sorted(robust_candidates, key=lambda x: x["oos_predictive_ll"], reverse=True)[0]
+    # Among robust candidates, select model with highest Validation Predictive Log-Likelihood
+    # (Test set is strictly held-out and evaluated only after the model is frozen)
+    best_candidate_diag = sorted(robust_candidates, key=lambda x: x["val_predictive_ll"], reverse=True)[0]
     best_model_key = best_candidate_diag["model_name"]
     best_model = trained_models[best_model_key]
     logger.info(f"\n=======================================================")
-    logger.info(f"SELECTED BASELINE MODEL: {best_model_key}")
-    logger.info(f"K={best_candidate_diag['n_components']}, OOS_LL={best_candidate_diag['oos_predictive_ll']:.1f}, BIC={best_candidate_diag['bic']:.1f}")
+    logger.info(f"SELECTED BASELINE MODEL (via Validation): {best_model_key}")
+    logger.info(f"K={best_candidate_diag['n_components']}, Val_Pred_LL={best_candidate_diag['val_predictive_ll']:.1f}, Test_OOS_LL={best_candidate_diag['oos_predictive_ll']:.1f}, BIC={best_candidate_diag['bic']:.1f}")
     logger.info(f"=======================================================\n")
 
     # 5. Generate Filtered Probabilities across the complete dataset

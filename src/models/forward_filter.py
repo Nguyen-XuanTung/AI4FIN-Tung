@@ -61,7 +61,7 @@ class ForwardFilter:
 
     def __init__(
         self,
-        model: GaussianHMM,
+        model: Union[GaussianHMM, "GMMHMM"],
         gap_policy: Literal["reset_prior", "stationary", "propagate_matrix"] = "reset_prior",
         max_gap_minutes: int = 15,
     ):
@@ -70,9 +70,18 @@ class ForwardFilter:
 
         self.model = model
         self.K = model.n_components
-        self.D = model.means_.shape[1]
         self.gap_policy = gap_policy
         self.max_gap_minutes = max_gap_minutes
+
+        # Detect whether model is GMM-HMM or single Gaussian HMM
+        self.is_gmm = hasattr(model, "weights_") and model.weights_ is not None
+        if self.is_gmm:
+            self.M = model.n_mix
+            self.D = model.means_.shape[2]
+            self.log_weights = np.log(np.maximum(model.weights_, 1e-12))
+        else:
+            self.M = 1
+            self.D = model.means_.shape[1]
 
         # Cache log parameters
         self.log_startprob = np.log(np.maximum(model.startprob_, 1e-12))
@@ -81,30 +90,57 @@ class ForwardFilter:
         self.log_stat_dist = np.log(np.maximum(self.stat_dist, 1e-12))
 
         # Precompute emission constants and precision matrices for ultra-fast evaluation
-        # Uses model.covars_ directly, consistent with GaussianHMM._compute_log_emissions()
-        self._emission_consts = np.empty(self.K, dtype=np.float64)
-        self._precision_mats = []
-        for k in range(self.K):
-            if model.covariance_type == "full":
-                cov = 0.5 * (model.covars_[k] + model.covars_[k].T)
-                sign, logdet = np.linalg.slogdet(cov)
-                if sign <= 0 or not np.isfinite(logdet):
-                    cov_safe = cov + np.eye(self.D) * 1e-9
-                    sign, logdet = np.linalg.slogdet(cov_safe)
-                    inv_cov = np.linalg.pinv(cov_safe)
+        # Uses model.covars_ directly, consistent with model._compute_log_emissions()
+        if self.is_gmm:
+            self._emission_consts = np.empty((self.K, self.M), dtype=np.float64)
+            self._precision_mats = [[None for _ in range(self.M)] for _ in range(self.K)]
+            for k in range(self.K):
+                for m in range(self.M):
+                    if model.covariance_type == "full":
+                        cov = 0.5 * (model.covars_[k, m] + model.covars_[k, m].T)
+                        sign, logdet = np.linalg.slogdet(cov)
+                        if sign <= 0 or not np.isfinite(logdet):
+                            cov_safe = cov + np.eye(self.D) * 1e-9
+                            sign, logdet = np.linalg.slogdet(cov_safe)
+                            inv_cov = np.linalg.pinv(cov_safe)
+                        else:
+                            inv_cov = np.linalg.inv(cov)
+                        self._precision_mats[k][m] = inv_cov
+                        self._emission_consts[k, m] = -0.5 * self.D * np.log(2.0 * np.pi) - 0.5 * logdet
+                    else:
+                        var = np.maximum(model.covars_[k, m], 1e-12)
+                        logdet = np.sum(np.log(var))
+                        self._precision_mats[k][m] = 1.0 / var
+                        self._emission_consts[k, m] = -0.5 * self.D * np.log(2.0 * np.pi) - 0.5 * logdet
+        else:
+            self._emission_consts = np.empty(self.K, dtype=np.float64)
+            self._precision_mats = []
+            for k in range(self.K):
+                if model.covariance_type == "full":
+                    cov = 0.5 * (model.covars_[k] + model.covars_[k].T)
+                    sign, logdet = np.linalg.slogdet(cov)
+                    if sign <= 0 or not np.isfinite(logdet):
+                        cov_safe = cov + np.eye(self.D) * 1e-9
+                        sign, logdet = np.linalg.slogdet(cov_safe)
+                        inv_cov = np.linalg.pinv(cov_safe)
+                    else:
+                        inv_cov = np.linalg.inv(cov)
+                    self._precision_mats.append(inv_cov)
+                    self._emission_consts[k] = -0.5 * self.D * np.log(2.0 * np.pi) - 0.5 * logdet
                 else:
-                    inv_cov = np.linalg.inv(cov)
-                self._precision_mats.append(inv_cov)
-                self._emission_consts[k] = -0.5 * self.D * np.log(2.0 * np.pi) - 0.5 * logdet
-            else:
-                var = np.maximum(model.covars_[k], 1e-12)
-                logdet = np.sum(np.log(var))
-                self._precision_mats.append(1.0 / var)
-                self._emission_consts[k] = -0.5 * self.D * np.log(2.0 * np.pi) - 0.5 * logdet
+                    var = np.maximum(model.covars_[k], 1e-12)
+                    logdet = np.sum(np.log(var))
+                    self._precision_mats.append(1.0 / var)
+                    self._emission_consts[k] = -0.5 * self.D * np.log(2.0 * np.pi) - 0.5 * logdet
 
     def compute_single_log_emission(self, x_t: np.ndarray) -> np.ndarray:
         """
         Compute log b_j(x_t) for state j = 1..K in microseconds.
+
+        For GMM-HMM:
+            log b_k(x_t) = LogSumExp_m [ log w_{km} + log N(x_t | mu_{km}, Sigma_{km}) ]
+        For Gaussian HMM:
+            log b_k(x_t) = log N(x_t | mu_k, Sigma_k)
 
         Parameters
         ----------
@@ -118,15 +154,32 @@ class ForwardFilter:
         x_t_arr = np.asarray(x_t, dtype=np.float64).ravel()
         log_b = np.empty(self.K, dtype=np.float64)
 
-        for k in range(self.K):
-            diff = x_t_arr - self.model.means_[k]
-            if self.model.covariance_type == "full":
-                inv_cov = self._precision_mats[k]
-                mahal = float(diff @ inv_cov @ diff)
-            else:
-                inv_var = self._precision_mats[k]
-                mahal = float(np.sum((diff ** 2) * inv_var))
-            log_b[k] = self._emission_consts[k] - 0.5 * mahal
+        if self.is_gmm:
+            for k in range(self.K):
+                log_phi = np.empty(self.M, dtype=np.float64)
+                for m in range(self.M):
+                    diff = x_t_arr - self.model.means_[k, m]
+                    if self.model.covariance_type == "full":
+                        inv_cov = self._precision_mats[k][m]
+                        mahal = float(diff @ inv_cov @ diff)
+                    else:
+                        inv_var = self._precision_mats[k][m]
+                        mahal = float(np.sum((diff ** 2) * inv_var))
+                    log_phi[m] = self._emission_consts[k, m] - 0.5 * mahal
+
+                terms = self.log_weights[k] + log_phi
+                mx = np.max(terms)
+                log_b[k] = mx + np.log(np.sum(np.exp(terms - mx)))
+        else:
+            for k in range(self.K):
+                diff = x_t_arr - self.model.means_[k]
+                if self.model.covariance_type == "full":
+                    inv_cov = self._precision_mats[k]
+                    mahal = float(diff @ inv_cov @ diff)
+                else:
+                    inv_var = self._precision_mats[k]
+                    mahal = float(np.sum((diff ** 2) * inv_var))
+                log_b[k] = self._emission_consts[k] - 0.5 * mahal
 
         return np.clip(np.nan_to_num(log_b, nan=-1e12, neginf=-1e12), -1e12, 1e12)
 

@@ -1,0 +1,302 @@
+{
+  "covariance_conditioning": {
+    "GMM_HMM_K3_M2": {
+      "K": 3,
+      "M": 2,
+      "states": [
+        {
+          "state": 0,
+          "components": [
+            {
+              "component": 0,
+              "min_eigenvalue": 2.1621283717756256e-07,
+              "max_eigenvalue": 0.044284917131903495,
+              "condition_number": 204820.94268775985,
+              "log10_condition_number": 5.311374360647168,
+              "is_positive_definite": true
+            },
+            {
+              "component": 1,
+              "min_eigenvalue": 5.3387371427871456e-08,
+              "max_eigenvalue": 0.04824155022014878,
+              "condition_number": 903613.5125199994,
+              "log10_condition_number": 5.95598271668059,
+              "is_positive_definite": true
+            }
+          ]
+        },
+        {
+          "state": 1,
+          "components": [
+            {
+              "component": 0,
+              "min_eigenvalue": 3.330938050425884e-07,
+              "max_eigenvalue": 0.07332176450924871,
+              "condition_number": 220123.47092397592,
+              "log10_condition_number": 5.342666352182211,
+              "is_positive_definite": true
+            },
+            {
+              "component": 1,
+              "min_eigenvalue": 2.2191285989749576e-06,
+              "max_eigenvalue": 0.138767936125743,
+              "condition_number": 62532.62482843112,
+              "log10_condition_number": 4.796106658723502,
+              "is_positive_definite": true
+            }
+          ]
+        },
+        {
+          "state": 2,
+          "components": [
+            {
+              "component": 0,
+              "min_eigenvalue": 4.87825006314408e-08,
+              "max_eigenvalue": 0.060671483435417825,
+              "condition_number": 1243714.0911205043,
+              "log10_condition_number": 6.094720554856619,
+              "is_positive_definite": true
+            },
+            {
+              "component": 1,
+              "min_eigenvalue": 9.529570526333123e-09,
+              "max_eigenvalue": 0.1199311375555312,
+              "condition_number": 12585156.615833286,
+              "log10_condition_number": 7.099858624490576,
+              "is_positive_definite": true
+            }
+          ]
+        }
+      ],
+      "max_kappa": 12585156.615833286,
+      "median_kappa": 561868.4917219877
+    },
+    "GMM_HMM_K3_M3": {
+      "K": 3,
+      "M": 3,
+      "states": [
+        {
+          "state": 0,
+          "components": [
+            {
+              "component": 0,
+              "min_eigenvalue": 5.960486693038112e-08,
+              "max_eigenvalue": 0.0339084407743305,
+              "condition_number": 568887.1147709428,
+              "log10_condition_number": 5.755026097158084,
+              "is_positive_definite": true
+            },
+            {
+              "component": 1,
+              "min_eigenvalue": 5.220939395852897e-09,
+              "max_eigenvalue": 0.14422824541250925,
+              "condition_number": 27624960.658817995,
+              "log10_condition_number": 7.44130166820736,
+              "is_positive_definite": true
+            },
+            {
+              "component": 2,
+              "min_eigenvalue": 1.6778507457380135e-08,
+              "max_eigenvalue": 0.04218098879269752,
+              "condition_number": 2513989.3342625024,
+              "log10_condition_number": 6.400363430835712,
+              "is_positive_definite": true
+            }
+          ]
+        },
+        {
+          "state": 1,
+          "components": [
+            {
+              "component": 0,
+              "min_eigenvalue": 7.714764709488761e-07,
+              "max_eigenvalue": 0.17638332967689463,
+              "condition_number": 228630.8608478393,
+              "log10_condition_number": 5.359134851568132,
+              "is_positive_definite": true
+            },
+            {
+              "component": 1,
+              "min_eigenvalue": 8.636091319661256e-08,
+              "max_eigenvalue": 0.09156729213303362,
+              "condition_number": 1060286.2885964166,
+              "log10_condition_number": 6.0254231452368945,
+              "is_positive_definite": true
+            },
+            {
+              "component": 2,
+              "min_eigenvalue": 1.583324377383958e-07,
+              "max_eigenvalue": 0.16718165399518892,
+              "condition_number": 1055890.1030211775,
+              "log10_condition_number": 6.023618719206183,
+              "is_positive_definite": true
+            }
+          ]
+        },
+        {
+          "state": 2,
+          "components": [
+            {
+              "component": 0,
+              "min_eigenvalue": 2.358310043922053e-08,
+              "max_eigenvalue": 0.1012858676373349,
+              "condition_number": 4294849.521519598,
+              "log10_condition_number": 6.63294795207447,
+              "is_positive_definite": true
+            },
+            {
+              "component": 1,
+              "min_eigenvalue": 6.312900089943718e-08,
+              "max_eigenvalue": 0.05439925696186018,
+              "condition_number": 861715.7912655192,
+              "log10_condition_number": 5.93536405162799,
+              "is_positive_definite": true
+            },
+            {
+              "component": 2,
+              "min_eigenvalue": 2.4682660602093936e-08,
+              "max_eigenvalue": 0.08187159404595745,
+              "condition_number": 3316967.946276097,
+              "log10_condition_number": 6.520741274708304,
+              "is_positive_definite": true
+            }
+          ]
+        }
+      ],
+      "max_kappa": 27624960.658817995,
+      "median_kappa": 1060286.2885964166
+    }
+  },
+  "covariance_regularization_sweep": {
+    "GMM_HMM_K3_M2": [
+      {
+        "cov_reg": 0.0001,
+        "val_predictive_ll": 25361.559810448685,
+        "test_predictive_ll": 25287.565190997928,
+        "max_condition_number": 13556207.227155313,
+        "median_condition_number": 550225.8159042066
+      },
+      {
+        "cov_reg": 0.0005,
+        "val_predictive_ll": 25361.817759134647,
+        "test_predictive_ll": 25287.29716654677,
+        "max_condition_number": 13092812.036794702,
+        "median_condition_number": 555706.3176789338
+      },
+      {
+        "cov_reg": 0.001,
+        "val_predictive_ll": 25361.78310850272,
+        "test_predictive_ll": 25286.76064843059,
+        "max_condition_number": 12585156.615833286,
+        "median_condition_number": 561868.4917219877
+      },
+      {
+        "cov_reg": 0.002,
+        "val_predictive_ll": 25360.764855983944,
+        "test_predictive_ll": 25285.10000773974,
+        "max_condition_number": 11749961.857168509,
+        "median_condition_number": 572191.4053224446
+      },
+      {
+        "cov_reg": 0.005,
+        "val_predictive_ll": 25353.310096077614,
+        "test_predictive_ll": 25276.514934973824,
+        "max_condition_number": 10083165.176857596,
+        "median_condition_number": 591769.3748003535
+      },
+      {
+        "cov_reg": 0.01,
+        "val_predictive_ll": 25332.00821814864,
+        "test_predictive_ll": 25254.311520477437,
+        "max_condition_number": 8516650.762173565,
+        "median_condition_number": 604996.7182826165
+      }
+    ],
+    "GMM_HMM_K3_M3": [
+      {
+        "cov_reg": 0.0001,
+        "val_predictive_ll": 25991.01987793707,
+        "test_predictive_ll": 25916.462136261107,
+        "max_condition_number": 30559774.700415675,
+        "median_condition_number": 1159197.2330185308
+      },
+      {
+        "cov_reg": 0.0005,
+        "val_predictive_ll": 25995.255289809378,
+        "test_predictive_ll": 25925.089837069136,
+        "max_condition_number": 29151958.614153724,
+        "median_condition_number": 1120491.9230061313
+      },
+      {
+        "cov_reg": 0.001,
+        "val_predictive_ll": 25993.210930977588,
+        "test_predictive_ll": 25928.342964860447,
+        "max_condition_number": 27624960.658817306,
+        "median_condition_number": 1060286.288596374
+      },
+      {
+        "cov_reg": 0.002,
+        "val_predictive_ll": 25982.46743993752,
+        "test_predictive_ll": 25925.591609041505,
+        "max_condition_number": 25123579.954295434,
+        "median_condition_number": 1049374.3041958062
+      },
+      {
+        "cov_reg": 0.005,
+        "val_predictive_ll": 25949.682734781094,
+        "test_predictive_ll": 25908.509831425123,
+        "max_condition_number": 19461551.505783644,
+        "median_condition_number": 1016693.7745213173
+      },
+      {
+        "cov_reg": 0.01,
+        "val_predictive_ll": 25875.238695084303,
+        "test_predictive_ll": 25842.43230052074,
+        "max_condition_number": 14880404.301556196,
+        "median_condition_number": 1408763.273131735
+      }
+    ]
+  },
+  "boundary_audit": {
+    "val_last_timestamp": "2023-10-27 00:45:00+00:00",
+    "test_first_timestamp": "2023-10-27 01:00:00+00:00",
+    "elapsed_seconds": 900.0,
+    "elapsed_minutes": 15.0,
+    "is_gap_at_boundary": false,
+    "test_sample_count": 4168,
+    "test_ll_fresh_prior": 25928.342964860443,
+    "test_ll_carry_forward": 25927.560617372987,
+    "difference_nats": -0.7823474874567182,
+    "mean_diff_per_bar": -0.0001877033319233969,
+    "bar0_prior_fresh": [
+      0.5115736844000808,
+      0.1791830955773688,
+      0.30924322002255045
+    ],
+    "bar0_prior_carry": [
+      0.867171625415319,
+      0.0003551216223169225,
+      0.13247325296236406
+    ],
+    "bar0_filtered_fresh": [
+      0.0031685566775496244,
+      0.11989718950881546,
+      0.876934253813635
+    ],
+    "bar0_filtered_carry": [
+      0.014087279741277279,
+      0.0006232436749680593,
+      0.9852894765837547
+    ],
+    "bar1_filtered_fresh": [
+      0.16940795002478332,
+      0.0004133732260792349,
+      0.8301786767491375
+    ],
+    "bar1_filtered_carry": [
+      0.18761558741735584,
+      0.00014528670769838362,
+      0.8122391258749458
+    ]
+  }
+}
