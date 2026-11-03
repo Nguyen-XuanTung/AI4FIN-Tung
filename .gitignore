@@ -1,0 +1,39 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Pytest & Coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# Environments
+.env
+.venv/
+env/
+venv/
+ENV/
+
+# IDE & Editor settings
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+.DS_Store
+
+# Raw data downloads & archives (reproducible via scripts/run_phase1.py)
+data/raw/*.zip
+data/raw/*.csv
+
+# Processed CSVs (redundant with parquet artifacts)
+data/processed/*.csv
+
+# Temporary scratch scripts
+scratch/
+tmp/

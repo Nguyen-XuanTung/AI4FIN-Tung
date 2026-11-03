@@ -1,0 +1,427 @@
+{
+  "dataset": "EURUSD_M15_2023",
+  "total_bars": 21632,
+  "complete_bars": 20836,
+  "partial_bars": 796,
+  "distribution_metrics": [
+    {
+      "feature": "r_oc",
+      "count": 21632,
+      "mean": -7.807830685901192e-07,
+      "std": 0.0004692751430872062,
+      "median": 0.0,
+      "min": -0.00738736303943189,
+      "max": 0.006700924258305197,
+      "skewness": 0.038,
+      "kurtosis": 17.433,
+      "zero_pct": 1.48,
+      "non_negative_pct": 51.11,
+      "dagostino_stat": 4971.2,
+      "dagostino_p": 0.0,
+      "gaussian_suitability": "Acceptable"
+    },
+    {
+      "feature": "r_cc",
+      "count": 21631,
+      "mean": 1.4734569419728943e-06,
+      "std": 0.0005128590592077867,
+      "median": 0.0,
+      "min": -0.009172431762406888,
+      "max": 0.007512933711065313,
+      "skewness": -0.107,
+      "kurtosis": 26.108,
+      "zero_pct": 1.64,
+      "non_negative_pct": 51.32,
+      "dagostino_stat": 5877.9,
+      "dagostino_p": 0.0,
+      "gaussian_suitability": "Moderate (Heavy tails / High skew)"
+    },
+    {
+      "feature": "log_range",
+      "count": 21632,
+      "mean": 0.0006056548335473345,
+      "std": 0.0004677068230479376,
+      "median": 0.000494323280941581,
+      "min": 0.0,
+      "max": 0.008501902270556569,
+      "skewness": 3.896,
+      "kurtosis": 32.747,
+      "zero_pct": 0.08,
+      "non_negative_pct": 100.0,
+      "dagostino_stat": 18677.8,
+      "dagostino_p": 0.0,
+      "gaussian_suitability": "Moderate (Heavy tails / High skew)"
+    },
+    {
+      "feature": "log_vol",
+      "count": 21632,
+      "mean": -7.62923007923022,
+      "std": 0.6838375478101567,
+      "median": -7.612320840163887,
+      "min": -13.815510557964274,
+      "max": -4.767465343988508,
+      "skewness": -0.766,
+      "kurtosis": 6.04,
+      "zero_pct": 0.0,
+      "non_negative_pct": 0.0,
+      "dagostino_stat": 4415.1,
+      "dagostino_p": 0.0,
+      "gaussian_suitability": "High (Symmetric & moderate tails)"
+    },
+    {
+      "feature": "upper_wick",
+      "count": 21632,
+      "mean": 0.00014982009367343918,
+      "std": 0.00018059480895626364,
+      "median": 0.00010007687799202412,
+      "min": 0.0,
+      "max": 0.0039878007756855936,
+      "skewness": 4.258,
+      "kurtosis": 41.778,
+      "zero_pct": 7.61,
+      "non_negative_pct": 100.0,
+      "dagostino_stat": 20144.3,
+      "dagostino_p": 0.0,
+      "gaussian_suitability": "Low (Zero-inflated & bounded [0, +inf))"
+    },
+    {
+      "feature": "lower_wick",
+      "count": 21632,
+      "mean": 0.0001482839203730606,
+      "std": 0.0001763734211801148,
+      "median": 0.00010037595370803503,
+      "min": 0.0,
+      "max": 0.003973965090075152,
+      "skewness": 4.284,
+      "kurtosis": 44.111,
+      "zero_pct": 7.97,
+      "non_negative_pct": 100.0,
+      "dagostino_stat": 20322.0,
+      "dagostino_p": 0.0,
+      "gaussian_suitability": "Low (Zero-inflated & bounded [0, +inf))"
+    },
+    {
+      "feature": "body_ratio",
+      "count": 21632,
+      "mean": 0.003528885100142362,
+      "std": 0.5418963374948066,
+      "median": 0.0,
+      "min": -1.0,
+      "max": 1.0,
+      "skewness": -0.016,
+      "kurtosis": -1.192,
+      "zero_pct": 1.48,
+      "non_negative_pct": 51.11,
+      "dagostino_stat": 17652.8,
+      "dagostino_p": 0.0,
+      "gaussian_suitability": "High (Symmetric & moderate tails)"
+    },
+    {
+      "feature": "range_ratio",
+      "count": 21632,
+      "mean": 1.1395123397680984,
+      "std": 0.648135473120638,
+      "median": 1.0,
+      "min": 0.0,
+      "max": 17.331512290773695,
+      "skewness": 4.201,
+      "kurtosis": 45.859,
+      "zero_pct": 0.08,
+      "non_negative_pct": 100.0,
+      "dagostino_stat": 20180.8,
+      "dagostino_p": 0.0,
+      "gaussian_suitability": "Moderate (Heavy tails / High skew)"
+    },
+    {
+      "feature": "p1_r_oc",
+      "count": 21632,
+      "mean": -6.706776652736634e-07,
+      "std": 0.0004692795566210142,
+      "median": 0.0,
+      "min": -0.007360143541107909,
+      "max": 0.00672342568329955,
+      "skewness": 0.052,
+      "kurtosis": 17.456,
+      "zero_pct": 1.48,
+      "non_negative_pct": 51.11,
+      "dagostino_stat": 4978.4,
+      "dagostino_p": 0.0,
+      "gaussian_suitability": "Acceptable"
+    },
+    {
+      "feature": "p1_r_oh",
+      "count": 21632,
+      "mean": 0.0003033150811885121,
+      "std": 0.00035800941071427743,
+      "median": 0.0002024161147900118,
+      "min": 0.0,
+      "max": 0.006770051381519479,
+      "skewness": 4.264,
+      "kurtosis": 39.914,
+      "zero_pct": 4.99,
+      "non_negative_pct": 100.0,
+      "dagostino_stat": 20067.4,
+      "dagostino_p": 0.0,
+      "gaussian_suitability": "Moderate (Heavy tails / High skew)"
+    },
+    {
+      "feature": "p1_r_ol",
+      "count": 21632,
+      "mean": 0.00030233921569654075,
+      "std": 0.0003597059126128635,
+      "median": 0.0002002822159988943,
+      "min": 0.0,
+      "max": 0.00749745965194956,
+      "skewness": 3.979,
+      "kurtosis": 32.457,
+      "zero_pct": 4.96,
+      "non_negative_pct": 100.0,
+      "dagostino_stat": 18885.7,
+      "dagostino_p": 0.0,
+      "gaussian_suitability": "Moderate (Heavy tails / High skew)"
+    }
+  ],
+  "pearson_correlations": {
+    "r_oc": {
+      "r_oc": 1.0,
+      "r_cc": 0.91,
+      "log_range": -0.014,
+      "log_vol": -0.0135,
+      "upper_wick": 0.0649,
+      "lower_wick": -0.0612,
+      "body_ratio": 0.786,
+      "range_ratio": 0.0052
+    },
+    "r_cc": {
+      "r_oc": 0.91,
+      "r_cc": 1.0,
+      "log_range": -0.0139,
+      "log_vol": -0.01,
+      "upper_wick": 0.0564,
+      "lower_wick": -0.0436,
+      "body_ratio": 0.7118,
+      "range_ratio": 0.0048
+    },
+    "log_range": {
+      "r_oc": -0.014,
+      "r_cc": -0.0139,
+      "log_range": 1.0,
+      "log_vol": 0.8335,
+      "upper_wick": 0.4977,
+      "lower_wick": 0.4936,
+      "body_ratio": -0.0115,
+      "range_ratio": 0.711
+    },
+    "log_vol": {
+      "r_oc": -0.0135,
+      "r_cc": -0.01,
+      "log_range": 0.8335,
+      "log_vol": 1.0,
+      "upper_wick": 0.44,
+      "lower_wick": 0.4365,
+      "body_ratio": -0.0073,
+      "range_ratio": 0.6174
+    },
+    "upper_wick": {
+      "r_oc": 0.0649,
+      "r_cc": 0.0564,
+      "log_range": 0.4977,
+      "log_vol": 0.44,
+      "upper_wick": 1.0,
+      "lower_wick": 0.1363,
+      "body_ratio": 0.0367,
+      "range_ratio": 0.2896
+    },
+    "lower_wick": {
+      "r_oc": -0.0612,
+      "r_cc": -0.0436,
+      "log_range": 0.4936,
+      "log_vol": 0.4365,
+      "upper_wick": 0.1363,
+      "lower_wick": 1.0,
+      "body_ratio": -0.0418,
+      "range_ratio": 0.2981
+    },
+    "body_ratio": {
+      "r_oc": 0.786,
+      "r_cc": 0.7118,
+      "log_range": -0.0115,
+      "log_vol": -0.0073,
+      "upper_wick": 0.0367,
+      "lower_wick": -0.0418,
+      "body_ratio": 1.0,
+      "range_ratio": -0.0048
+    },
+    "range_ratio": {
+      "r_oc": 0.0052,
+      "r_cc": 0.0048,
+      "log_range": 0.711,
+      "log_vol": 0.6174,
+      "upper_wick": 0.2896,
+      "lower_wick": 0.2981,
+      "body_ratio": -0.0048,
+      "range_ratio": 1.0
+    }
+  },
+  "spearman_correlations": {
+    "r_oc": {
+      "r_oc": 1.0,
+      "r_cc": 0.964,
+      "log_range": -0.0016,
+      "log_vol": -0.0016,
+      "upper_wick": 0.0669,
+      "lower_wick": -0.0685,
+      "body_ratio": 0.9463,
+      "range_ratio": 0.0002
+    },
+    "r_cc": {
+      "r_oc": 0.964,
+      "r_cc": 1.0,
+      "log_range": 0.0001,
+      "log_vol": 0.0001,
+      "upper_wick": 0.0657,
+      "lower_wick": -0.0639,
+      "body_ratio": 0.912,
+      "range_ratio": -0.0002
+    },
+    "log_range": {
+      "r_oc": -0.0016,
+      "r_cc": 0.0001,
+      "log_range": 1.0,
+      "log_vol": 1.0,
+      "upper_wick": 0.3944,
+      "lower_wick": 0.3935,
+      "body_ratio": -0.0056,
+      "range_ratio": 0.665
+    },
+    "log_vol": {
+      "r_oc": -0.0016,
+      "r_cc": 0.0001,
+      "log_range": 1.0,
+      "log_vol": 1.0,
+      "upper_wick": 0.3944,
+      "lower_wick": 0.3935,
+      "body_ratio": -0.0056,
+      "range_ratio": 0.665
+    },
+    "upper_wick": {
+      "r_oc": 0.0669,
+      "r_cc": 0.0657,
+      "log_range": 0.3944,
+      "log_vol": 0.3944,
+      "upper_wick": 1.0,
+      "lower_wick": 0.0388,
+      "body_ratio": 0.058,
+      "range_ratio": 0.1836
+    },
+    "lower_wick": {
+      "r_oc": -0.0685,
+      "r_cc": -0.0639,
+      "log_range": 0.3935,
+      "log_vol": 0.3935,
+      "upper_wick": 0.0388,
+      "lower_wick": 1.0,
+      "body_ratio": -0.0664,
+      "range_ratio": 0.1735
+    },
+    "body_ratio": {
+      "r_oc": 0.9463,
+      "r_cc": 0.912,
+      "log_range": -0.0056,
+      "log_vol": -0.0056,
+      "upper_wick": 0.058,
+      "lower_wick": -0.0664,
+      "body_ratio": 1.0,
+      "range_ratio": -0.0008
+    },
+    "range_ratio": {
+      "r_oc": 0.0002,
+      "r_cc": -0.0002,
+      "log_range": 0.665,
+      "log_vol": 0.665,
+      "upper_wick": 0.1836,
+      "lower_wick": 0.1735,
+      "body_ratio": -0.0008,
+      "range_ratio": 1.0
+    }
+  },
+  "candidate_configurations": {
+    "Config_1_Paper1": {
+      "name": "Paper 1 Direct Benchmark (3D)",
+      "features": [
+        "p1_r_oc",
+        "p1_r_oh",
+        "p1_r_ol"
+      ],
+      "dimension": 3,
+      "description": "Direct implementation of Kijkarncharoensin (2025): percentage body return, open-to-high, and low-to-open returns.",
+      "theoretical_foundation": "Paper 1 (Risks 2025)",
+      "limitations": "Non-negative support for r_oh and r_ol; high correlation between features."
+    },
+    "Config_2_MinimalOrthogonal": {
+      "name": "Minimal Orthogonal 2D (Body Return + Log-Vol)",
+      "features": [
+        "r_oc",
+        "log_vol"
+      ],
+      "dimension": 2,
+      "description": "Decouples signed price direction (r_oc) from unsigned volatility scale (log_vol = ln(ln(H/L))).",
+      "theoretical_foundation": "Orthogonal decomposition (zero Pearson correlation r = -0.014).",
+      "limitations": "Omits wick rejection geometry."
+    },
+    "Config_3_BodyAndWicks": {
+      "name": "Candlestick Body & Wicks 3D",
+      "features": [
+        "r_oc",
+        "upper_wick",
+        "lower_wick"
+      ],
+      "dimension": 3,
+      "description": "Directional body return combined with upper and lower price rejection wicks.",
+      "theoretical_foundation": "Price rejection and intraday candle geometry (WORK_PLAN.md Phase 2).",
+      "limitations": "Wicks have ~8% zero-inflation and non-negative support."
+    },
+    "Config_4_FullCandle": {
+      "name": "Full Candlestick Geometry 4D",
+      "features": [
+        "r_oc",
+        "log_vol",
+        "upper_wick",
+        "lower_wick"
+      ],
+      "dimension": 4,
+      "description": "Comprehensive representation including direction, volatility scale, and dual rejection wicks.",
+      "theoretical_foundation": "Multi-dimensional price formation.",
+      "limitations": "Higher covariance dimensionality (10 covariance parameters per mixture)."
+    },
+    "Config_5_DiurnalAdjusted": {
+      "name": "Diurnal-Adjusted Orthogonal 2D",
+      "features": [
+        "r_oc",
+        "range_ratio"
+      ],
+      "dimension": 2,
+      "description": "Directional body return with seasonality-normalized range (scaled by 15-minute time-of-day median).",
+      "theoretical_foundation": "Controls for Asian vs London/NY session volatility differences.",
+      "limitations": "Requires fitting seasonal baseline on training set without look-ahead leakage."
+    },
+    "Config_6_DiurnalConviction": {
+      "name": "Diurnal-Adjusted with Conviction 3D",
+      "features": [
+        "r_oc",
+        "range_ratio",
+        "body_ratio"
+      ],
+      "dimension": 3,
+      "description": "Direction, seasonality-adjusted range, and normalized directional conviction ((C-O)/(H-L)).",
+      "theoretical_foundation": "Combines de-seasonalized volatility with bounded conviction in [-1, +1].",
+      "limitations": "Moderate correlation between r_oc and body_ratio."
+    }
+  },
+  "figures": {
+    "distributions": "data\\reports\\figures\\01_feature_distributions.png",
+    "partial_comparison": "data\\reports\\figures\\02_partial_vs_complete_candles.png",
+    "seasonality": "data\\reports\\figures\\03_intraday_seasonality.png",
+    "correlations": "data\\reports\\figures\\04_correlation_heatmaps.png"
+  }
+}
