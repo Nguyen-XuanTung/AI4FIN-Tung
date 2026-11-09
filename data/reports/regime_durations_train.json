@@ -1,0 +1,341 @@
+{
+  "Gaussian_HMM_K3_M1_v1": {
+    "model_version": "Gaussian_HMM_K3_M1_v1",
+    "n_states": 3,
+    "total_samples": 12501,
+    "n_continuous_sequences": 876,
+    "model_implied_expected_duration": {
+      "0": {
+        "self_transition_prob": 0.7211856157388373,
+        "exit_prob": 0.2788143842611627,
+        "expected_bars": 3.5866155279252374,
+        "std_bars": 3.0458488828615895,
+        "expected_hours": 0.8966538819813094
+      },
+      "1": {
+        "self_transition_prob": 0.8495602446297588,
+        "exit_prob": 0.15043975537024123,
+        "expected_bars": 6.647179115247431,
+        "std_bars": 6.126810840472732,
+        "expected_hours": 1.6617947788118577
+      },
+      "2": {
+        "self_transition_prob": 0.7741873102205565,
+        "exit_prob": 0.22581268977944347,
+        "expected_bars": 4.428449087501342,
+        "std_bars": 3.8964999978301202,
+        "expected_hours": 1.1071122718753355
+      }
+    },
+    "retrospective_viterbi_durations": {
+      "per_state_runs": {
+        "0": {
+          "count": 602,
+          "mean_bars": 3.6096345514950166,
+          "std_bars": 4.031750881942667,
+          "median_bars": 2.0,
+          "min_bars": 1,
+          "max_bars": 37,
+          "q25_bars": 1.0,
+          "q75_bars": 4.0,
+          "mean_hours": 0.9024086378737541,
+          "median_hours": 0.5
+        },
+        "1": {
+          "count": 916,
+          "mean_bars": 5.104803493449782,
+          "std_bars": 4.824565878670031,
+          "median_bars": 4.0,
+          "min_bars": 1,
+          "max_bars": 33,
+          "q25_bars": 2.0,
+          "q75_bars": 6.0,
+          "mean_hours": 1.2762008733624455,
+          "median_hours": 1.0
+        },
+        "2": {
+          "count": 1242,
+          "mean_bars": 4.550724637681159,
+          "std_bars": 3.983781012882462,
+          "median_bars": 3.0,
+          "min_bars": 1,
+          "max_bars": 27,
+          "q25_bars": 2.0,
+          "q75_bars": 6.0,
+          "mean_hours": 1.1376811594202898,
+          "median_hours": 0.75
+        }
+      },
+      "overall_switching_rate": 0.16206451612903225,
+      "total_switches": 1884
+    },
+    "causal_filtered_durations": {
+      "per_state_runs": {
+        "0": {
+          "count": 899,
+          "mean_bars": 2.331479421579533,
+          "std_bars": 2.3721704824355774,
+          "median_bars": 1.0,
+          "min_bars": 1,
+          "max_bars": 19,
+          "q25_bars": 1.0,
+          "q75_bars": 3.0,
+          "mean_hours": 0.5828698553948832,
+          "median_hours": 0.25
+        },
+        "1": {
+          "count": 1336,
+          "mean_bars": 3.4550898203592815,
+          "std_bars": 3.329732743290217,
+          "median_bars": 2.0,
+          "min_bars": 1,
+          "max_bars": 25,
+          "q25_bars": 1.0,
+          "q75_bars": 4.0,
+          "mean_hours": 0.8637724550898204,
+          "median_hours": 0.5
+        },
+        "2": {
+          "count": 1908,
+          "mean_bars": 3.0340670859538785,
+          "std_bars": 2.795305229556036,
+          "median_bars": 2.0,
+          "min_bars": 1,
+          "max_bars": 27,
+          "q25_bars": 1.0,
+          "q75_bars": 4.0,
+          "mean_hours": 0.7585167714884696,
+          "median_hours": 0.5
+        }
+      },
+      "overall_switching_rate": 0.28103225806451615,
+      "total_switches": 3267
+    }
+  },
+  "GMM_HMM_K3_M2_v1": {
+    "model_version": "GMM_HMM_K3_M2_v1",
+    "n_states": 3,
+    "total_samples": 12501,
+    "n_continuous_sequences": 876,
+    "model_implied_expected_duration": {
+      "0": {
+        "self_transition_prob": 0.823761010417041,
+        "exit_prob": 0.17623898958295903,
+        "expected_bars": 5.6741133296686375,
+        "std_bars": 5.149897935712384,
+        "expected_hours": 1.4185283324171594
+      },
+      "1": {
+        "self_transition_prob": 0.8443321148563255,
+        "exit_prob": 0.15566788514367447,
+        "expected_bars": 6.4239325862045655,
+        "std_bars": 5.902794023671868,
+        "expected_hours": 1.6059831465511414
+      },
+      "2": {
+        "self_transition_prob": 0.8790762052974851,
+        "exit_prob": 0.12092379470251491,
+        "expected_bars": 8.269671014378137,
+        "std_bars": 7.753566126091128,
+        "expected_hours": 2.067417753594534
+      }
+    },
+    "retrospective_viterbi_durations": {
+      "per_state_runs": {
+        "0": {
+          "count": 894,
+          "mean_bars": 5.8389261744966445,
+          "std_bars": 4.873633310494296,
+          "median_bars": 4.0,
+          "min_bars": 1,
+          "max_bars": 30,
+          "q25_bars": 3.0,
+          "q75_bars": 7.0,
+          "mean_hours": 1.4597315436241611,
+          "median_hours": 1.0
+        },
+        "1": {
+          "count": 470,
+          "mean_bars": 6.142553191489362,
+          "std_bars": 6.248146665283712,
+          "median_bars": 4.0,
+          "min_bars": 1,
+          "max_bars": 46,
+          "q25_bars": 2.0,
+          "q75_bars": 8.0,
+          "mean_hours": 1.5356382978723404,
+          "median_hours": 1.0
+        },
+        "2": {
+          "count": 751,
+          "mean_bars": 5.850865512649801,
+          "std_bars": 5.6027727584850675,
+          "median_bars": 4.0,
+          "min_bars": 1,
+          "max_bars": 33,
+          "q25_bars": 2.0,
+          "q75_bars": 8.0,
+          "mean_hours": 1.4627163781624501,
+          "median_hours": 1.0
+        }
+      },
+      "overall_switching_rate": 0.10658064516129032,
+      "total_switches": 1239
+    },
+    "causal_filtered_durations": {
+      "per_state_runs": {
+        "0": {
+          "count": 1522,
+          "mean_bars": 3.5295663600525624,
+          "std_bars": 3.1882808000692924,
+          "median_bars": 2.0,
+          "min_bars": 1,
+          "max_bars": 22,
+          "q25_bars": 1.0,
+          "q75_bars": 4.0,
+          "mean_hours": 0.8823915900131406,
+          "median_hours": 0.5
+        },
+        "1": {
+          "count": 793,
+          "mean_bars": 3.562421185372005,
+          "std_bars": 4.061266930399263,
+          "median_bars": 2.0,
+          "min_bars": 1,
+          "max_bars": 37,
+          "q25_bars": 1.0,
+          "q75_bars": 4.0,
+          "mean_hours": 0.8906052963430012,
+          "median_hours": 0.5
+        },
+        "2": {
+          "count": 1091,
+          "mean_bars": 3.945004582951421,
+          "std_bars": 3.9761560288844326,
+          "median_bars": 3.0,
+          "min_bars": 1,
+          "max_bars": 27,
+          "q25_bars": 1.0,
+          "q75_bars": 5.0,
+          "mean_hours": 0.9862511457378552,
+          "median_hours": 0.75
+        }
+      },
+      "overall_switching_rate": 0.21763440860215053,
+      "total_switches": 2530
+    }
+  },
+  "GMM_HMM_K3_M3_v1": {
+    "model_version": "GMM_HMM_K3_M3_v1",
+    "n_states": 3,
+    "total_samples": 12501,
+    "n_continuous_sequences": 876,
+    "model_implied_expected_duration": {
+      "0": {
+        "self_transition_prob": 0.8714217123112775,
+        "exit_prob": 0.12857828768872248,
+        "expected_bars": 7.777362865656745,
+        "std_bars": 7.260165995240036,
+        "expected_hours": 1.9443407164141862
+      },
+      "1": {
+        "self_transition_prob": 0.8857545717146359,
+        "exit_prob": 0.1142454282853641,
+        "expected_bars": 8.753085484542835,
+        "std_bars": 8.237925710709684,
+        "expected_hours": 2.1882713711357087
+      },
+      "2": {
+        "self_transition_prob": 0.8558263984884105,
+        "exit_prob": 0.14417360151158953,
+        "expected_bars": 6.93608253879691,
+        "std_bars": 6.416631393979748,
+        "expected_hours": 1.7340206346992275
+      }
+    },
+    "retrospective_viterbi_durations": {
+      "per_state_runs": {
+        "0": {
+          "count": 732,
+          "mean_bars": 5.595628415300546,
+          "std_bars": 5.041049823745468,
+          "median_bars": 4.0,
+          "min_bars": 1,
+          "max_bars": 33,
+          "q25_bars": 2.0,
+          "q75_bars": 7.25,
+          "mean_hours": 1.3989071038251366,
+          "median_hours": 1.0
+        },
+        "1": {
+          "count": 380,
+          "mean_bars": 7.528947368421052,
+          "std_bars": 7.465078166294368,
+          "median_bars": 4.0,
+          "min_bars": 1,
+          "max_bars": 53,
+          "q25_bars": 4.0,
+          "q75_bars": 10.0,
+          "mean_hours": 1.882236842105263,
+          "median_hours": 1.0
+        },
+        "2": {
+          "count": 826,
+          "mean_bars": 6.711864406779661,
+          "std_bars": 5.660648183124204,
+          "median_bars": 4.0,
+          "min_bars": 1,
+          "max_bars": 36,
+          "q25_bars": 3.0,
+          "q75_bars": 9.0,
+          "mean_hours": 1.6779661016949152,
+          "median_hours": 1.0
+        }
+      },
+      "overall_switching_rate": 0.09135483870967742,
+      "total_switches": 1062
+    },
+    "causal_filtered_durations": {
+      "per_state_runs": {
+        "0": {
+          "count": 1044,
+          "mean_bars": 3.8371647509578546,
+          "std_bars": 3.7396476482089054,
+          "median_bars": 2.0,
+          "min_bars": 1,
+          "max_bars": 27,
+          "q25_bars": 1.0,
+          "q75_bars": 5.0,
+          "mean_hours": 0.9592911877394636,
+          "median_hours": 0.5
+        },
+        "1": {
+          "count": 682,
+          "mean_bars": 4.174486803519062,
+          "std_bars": 4.482997094812984,
+          "median_bars": 3.0,
+          "min_bars": 1,
+          "max_bars": 37,
+          "q25_bars": 1.0,
+          "q75_bars": 5.0,
+          "mean_hours": 1.0436217008797655,
+          "median_hours": 0.75
+        },
+        "2": {
+          "count": 1416,
+          "mean_bars": 3.9887005649717513,
+          "std_bars": 3.791549019066686,
+          "median_bars": 3.0,
+          "min_bars": 1,
+          "max_bars": 27,
+          "q25_bars": 1.0,
+          "q75_bars": 5.0,
+          "mean_hours": 0.9971751412429378,
+          "median_hours": 0.75
+        }
+      },
+      "overall_switching_rate": 0.19492473118279569,
+      "total_switches": 2266
+    }
+  }
+}

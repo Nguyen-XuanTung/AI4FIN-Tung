@@ -1,0 +1,251 @@
+{
+  "Gaussian_HMM_K3_M1_v1": {
+    "candidate_model_version": "Gaussian_HMM_K3_M1_v1",
+    "reference_model_version": "GMM_HMM_K3_M3_v1",
+    "k_candidate": 3,
+    "k_reference": 3,
+    "distance_threshold": 2.5,
+    "ambiguity_margin": 0.2,
+    "threshold_type": "operational_heuristic",
+    "global_assignment_gap": 3.3730132803871373,
+    "is_globally_ambiguous": false,
+    "cost_matrix": [
+      [
+        3.950605873091557,
+        1.0414343246381377,
+        2.754578790594016
+      ],
+      [
+        0.08417945613064788,
+        3.4700232537951057,
+        1.832739392422265
+      ],
+      [
+        2.477943022603582,
+        3.2539909902284334,
+        0.853489678508062
+      ]
+    ],
+    "matches": {
+      "0": {
+        "cand_state_id": 0,
+        "matched_ref_state_id": 1,
+        "canonical_semantic_label": "Regime_1_HighVol_Neutral",
+        "volatility_dimension": "High_Volatility",
+        "direction_dimension": "Neutral",
+        "matching_cost": 1.0414343246381377,
+        "status": "MATCHED",
+        "is_ambiguous": false,
+        "second_best_ref_id": 2,
+        "second_best_cost": 2.754578790594016,
+        "cost_margin": 1.7131444659558783,
+        "competitor_cand_id": 2,
+        "competitor_cost_margin": 2.212556665590296
+      },
+      "1": {
+        "cand_state_id": 1,
+        "matched_ref_state_id": 0,
+        "canonical_semantic_label": "Regime_0_LowVol_Neutral",
+        "volatility_dimension": "Low_Volatility",
+        "direction_dimension": "Neutral",
+        "matching_cost": 0.08417945613064788,
+        "status": "MATCHED",
+        "is_ambiguous": false,
+        "second_best_ref_id": 2,
+        "second_best_cost": 1.832739392422265,
+        "cost_margin": 1.748559936291617,
+        "competitor_cand_id": 2,
+        "competitor_cost_margin": 2.393763566472934
+      },
+      "2": {
+        "cand_state_id": 2,
+        "matched_ref_state_id": 2,
+        "canonical_semantic_label": "Regime_2_MedVol_Neutral",
+        "volatility_dimension": "Medium_Volatility",
+        "direction_dimension": "Neutral",
+        "matching_cost": 0.853489678508062,
+        "status": "MATCHED",
+        "is_ambiguous": false,
+        "second_best_ref_id": 0,
+        "second_best_cost": 2.477943022603582,
+        "cost_margin": 0.979249713914203,
+        "competitor_cand_id": 1,
+        "competitor_cost_margin": 0.979249713914203
+      }
+    },
+    "diagnostics": {
+      "candidate_match_rate": 1.0,
+      "reference_coverage": 1.0,
+      "average_matched_cost": 0.6597011530922825,
+      "max_matched_cost": 1.0414343246381377,
+      "ambiguous_state_count": 0,
+      "unmatched_state_count": 0
+    }
+  },
+  "GMM_HMM_K3_M2_v1": {
+    "candidate_model_version": "GMM_HMM_K3_M2_v1",
+    "reference_model_version": "GMM_HMM_K3_M3_v1",
+    "k_candidate": 3,
+    "k_reference": 3,
+    "distance_threshold": 2.5,
+    "ambiguity_margin": 0.2,
+    "threshold_type": "operational_heuristic",
+    "global_assignment_gap": 3.3618652922593015,
+    "is_globally_ambiguous": false,
+    "cost_matrix": [
+      [
+        2.211321558845354,
+        3.1088600646076086,
+        0.6167054961903857
+      ],
+      [
+        3.549063244240989,
+        0.5727847932232771,
+        2.532785654138161
+      ],
+      [
+        0.12341545518050671,
+        3.454608077632009,
+        1.8906646847848405
+      ]
+    ],
+    "matches": {
+      "0": {
+        "cand_state_id": 0,
+        "matched_ref_state_id": 2,
+        "canonical_semantic_label": "Regime_2_MedVol_Neutral",
+        "volatility_dimension": "Medium_Volatility",
+        "direction_dimension": "Neutral",
+        "matching_cost": 0.6167054961903857,
+        "status": "MATCHED",
+        "is_ambiguous": false,
+        "second_best_ref_id": 0,
+        "second_best_cost": 2.211321558845354,
+        "cost_margin": 1.2739591885944548,
+        "competitor_cand_id": 2,
+        "competitor_cost_margin": 1.2739591885944548
+      },
+      "1": {
+        "cand_state_id": 1,
+        "matched_ref_state_id": 1,
+        "canonical_semantic_label": "Regime_1_HighVol_Neutral",
+        "volatility_dimension": "High_Volatility",
+        "direction_dimension": "Neutral",
+        "matching_cost": 0.5727847932232771,
+        "status": "MATCHED",
+        "is_ambiguous": false,
+        "second_best_ref_id": 2,
+        "second_best_cost": 2.532785654138161,
+        "cost_margin": 1.9600008609148838,
+        "competitor_cand_id": 0,
+        "competitor_cost_margin": 2.5360752713843313
+      },
+      "2": {
+        "cand_state_id": 2,
+        "matched_ref_state_id": 0,
+        "canonical_semantic_label": "Regime_0_LowVol_Neutral",
+        "volatility_dimension": "Low_Volatility",
+        "direction_dimension": "Neutral",
+        "matching_cost": 0.12341545518050671,
+        "status": "MATCHED",
+        "is_ambiguous": false,
+        "second_best_ref_id": 2,
+        "second_best_cost": 1.8906646847848405,
+        "cost_margin": 1.7672492296043338,
+        "competitor_cand_id": 0,
+        "competitor_cost_margin": 2.087906103664847
+      }
+    },
+    "diagnostics": {
+      "candidate_match_rate": 1.0,
+      "reference_coverage": 1.0,
+      "average_matched_cost": 0.43763524819805655,
+      "max_matched_cost": 0.6167054961903857,
+      "ambiguous_state_count": 0,
+      "unmatched_state_count": 0
+    }
+  },
+  "GMM_HMM_K3_M3_v1": {
+    "candidate_model_version": "GMM_HMM_K3_M3_v1",
+    "reference_model_version": "GMM_HMM_K3_M3_v1",
+    "k_candidate": 3,
+    "k_reference": 3,
+    "distance_threshold": 2.5,
+    "ambiguity_margin": 0.2,
+    "threshold_type": "operational_heuristic",
+    "global_assignment_gap": 3.753432958964546,
+    "is_globally_ambiguous": false,
+    "cost_matrix": [
+      [
+        0.0,
+        3.5032431217216797,
+        1.876716479482273
+      ],
+      [
+        3.5032431217216797,
+        0.0,
+        2.7062408457264224
+      ],
+      [
+        1.876716479482273,
+        2.7062408457264224,
+        0.0
+      ]
+    ],
+    "matches": {
+      "0": {
+        "cand_state_id": 0,
+        "matched_ref_state_id": 0,
+        "canonical_semantic_label": "Regime_0_LowVol_Neutral",
+        "volatility_dimension": "Low_Volatility",
+        "direction_dimension": "Neutral",
+        "matching_cost": 0.0,
+        "status": "MATCHED",
+        "is_ambiguous": false,
+        "second_best_ref_id": 2,
+        "second_best_cost": 1.876716479482273,
+        "cost_margin": 1.876716479482273,
+        "competitor_cand_id": 2,
+        "competitor_cost_margin": 1.876716479482273
+      },
+      "1": {
+        "cand_state_id": 1,
+        "matched_ref_state_id": 1,
+        "canonical_semantic_label": "Regime_1_HighVol_Neutral",
+        "volatility_dimension": "High_Volatility",
+        "direction_dimension": "Neutral",
+        "matching_cost": 0.0,
+        "status": "MATCHED",
+        "is_ambiguous": false,
+        "second_best_ref_id": 2,
+        "second_best_cost": 2.7062408457264224,
+        "cost_margin": 2.7062408457264224,
+        "competitor_cand_id": 2,
+        "competitor_cost_margin": 2.7062408457264224
+      },
+      "2": {
+        "cand_state_id": 2,
+        "matched_ref_state_id": 2,
+        "canonical_semantic_label": "Regime_2_MedVol_Neutral",
+        "volatility_dimension": "Medium_Volatility",
+        "direction_dimension": "Neutral",
+        "matching_cost": 0.0,
+        "status": "MATCHED",
+        "is_ambiguous": false,
+        "second_best_ref_id": 0,
+        "second_best_cost": 1.876716479482273,
+        "cost_margin": 1.876716479482273,
+        "competitor_cand_id": 0,
+        "competitor_cost_margin": 1.876716479482273
+      }
+    },
+    "diagnostics": {
+      "candidate_match_rate": 1.0,
+      "reference_coverage": 1.0,
+      "average_matched_cost": 0.0,
+      "max_matched_cost": 0.0,
+      "ambiguous_state_count": 0,
+      "unmatched_state_count": 0
+    }
+  }
+}
