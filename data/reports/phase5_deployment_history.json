@@ -1,0 +1,18 @@
+[
+  {
+    "deployed_at_utc": "2026-11-03T15:20:49.149272+00:00",
+    "previous_model_version": "Gaussian_HMM_K3_M1_v1",
+    "new_model_version": "GMM_HMM_K3_M3_v1",
+    "warmup_bars": 50,
+    "final_warmup_posterior": [
+      0.8420109418798404,
+      9.726738752972129e-07,
+      0.15798808544628423
+    ],
+    "diagnostic_warnings": [],
+    "validation_diagnostics": {
+      "min_covariance_eigenvalue": 5.220939395852897e-09,
+      "max_condition_number": 27624960.658817995
+    }
+  }
+]

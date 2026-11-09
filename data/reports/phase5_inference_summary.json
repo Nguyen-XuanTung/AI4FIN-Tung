@@ -1,0 +1,121 @@
+{
+  "execution_timestamp_utc": "2026-11-03T15:22:11.018756+00:00",
+  "total_bars_streamed": 21632,
+  "cutover_bar_index": 12920,
+  "cutover_timestamp_utc": "2023-08-24 12:00:00+00:00",
+  "training_end_timestamp_utc": "2023-08-24 11:45:00+00:00",
+  "initial_model": "Gaussian_HMM_K3_M1_v1",
+  "cutover_model": "GMM_HMM_K3_M3_v1",
+  "warmup_buffer_length_used": 50,
+  "latency_benchmarks_microseconds": {
+    "mean": 156.63134478786716,
+    "median": 141.25,
+    "std": 55.352986762559986,
+    "p90": 226.2,
+    "p95": 256.725,
+    "p99": 327.8650000000001,
+    "max": 1243.2,
+    "throughput_bars_per_sec": 6384.418146663714
+  },
+  "model_validation_summary": {
+    "Gaussian_HMM_K3_M1_v1": {
+      "deployable": true,
+      "hard_passed": true,
+      "warnings": [],
+      "diagnostics": {
+        "min_covariance_eigenvalue": 2.8173033648547757e-08,
+        "max_condition_number": 5311603.748189606,
+        "val_min_soft_occupancy": 0.13228234118067067,
+        "val_min_hard_occupancy": 0.11807055435565154,
+        "val_switch_frequency": 0.24459913586173787,
+        "val_predictive_ll": 24867.104675072533
+      }
+    },
+    "GMM_HMM_K3_M2_v1": {
+      "deployable": true,
+      "hard_passed": true,
+      "warnings": [],
+      "diagnostics": {
+        "min_covariance_eigenvalue": 9.529570526333123e-09,
+        "max_condition_number": 12585156.615833286,
+        "val_min_soft_occupancy": 0.17624685953913105,
+        "val_min_hard_occupancy": 0.16606671466282696,
+        "val_switch_frequency": 0.1898703792606817,
+        "val_predictive_ll": 25383.60941726232
+      }
+    },
+    "GMM_HMM_K3_M3_v1": {
+      "deployable": true,
+      "hard_passed": true,
+      "warnings": [],
+      "diagnostics": {
+        "min_covariance_eigenvalue": 5.220939395852897e-09,
+        "max_condition_number": 27624960.658817995,
+        "val_min_soft_occupancy": 0.17228035074799739,
+        "val_min_hard_occupancy": 0.16294696424286056,
+        "val_switch_frequency": 0.1627460393662986,
+        "val_predictive_ll": 26009.93170150992
+      }
+    }
+  },
+  "warmup_sensitivity_summary": {
+    "recommended_W_star_1e4": 5,
+    "recommended_W_star_1e6": 10,
+    "multi_window_summary": {
+      "Train_Val_Cutover": {
+        "name": "Train/Val Boundary (2023-08-24 12:00 UTC)",
+        "target_timestamp_utc": "2023-08-24 11:45:00+00:00",
+        "w_star_1e4": 5,
+        "w_star_1e6": 10,
+        "l1_at_w50": 0.0
+      },
+      "Quiet_Asian": {
+        "name": "Low-Volatility Quiet Session (2023-02-14 00:00 UTC)",
+        "target_timestamp_utc": "2023-02-14 04:45:00+00:00",
+        "w_star_1e4": 5,
+        "w_star_1e6": 10,
+        "l1_at_w50": 0.0
+      },
+      "Turbulent_SVB": {
+        "name": "High-Volatility Turbulence (2023-03-24 14:00 UTC)",
+        "target_timestamp_utc": "2023-03-24 01:45:00+00:00",
+        "w_star_1e4": 5,
+        "w_star_1e6": 10,
+        "l1_at_w50": 0.0
+      },
+      "Post_Weekend_Gap": {
+        "name": "Post-Weekend Gap Opening (2023-05-15 00:00 UTC)",
+        "target_timestamp_utc": "2023-05-16 03:45:00+00:00",
+        "w_star_1e4": 5,
+        "w_star_1e6": 10,
+        "l1_at_w50": 0.0
+      },
+      "Year_End_Fade": {
+        "name": "Year-End Trending / Liquidity Fade (2023-12-06 12:00 UTC)",
+        "target_timestamp_utc": "2023-12-06 06:30:00+00:00",
+        "w_star_1e4": 5,
+        "w_star_1e6": 5,
+        "l1_at_w50": 0.0
+      }
+    }
+  },
+  "immutable_store": {
+    "jsonl_path": "C:\\Users\\LaptopK1\\Downloads\\Code\\AI4FIN-Tung\\data\\processed\\as_of_inference_log.jsonl",
+    "in_sample_parquet_path": "C:\\Users\\LaptopK1\\Downloads\\Code\\AI4FIN-Tung\\data\\processed\\in_sample_inference_log.parquet",
+    "as_of_replay_parquet_path": "C:\\Users\\LaptopK1\\Downloads\\Code\\AI4FIN-Tung\\data\\processed\\as_of_replay_inference_log.parquet",
+    "as_of_parquet_path": "C:\\Users\\LaptopK1\\Downloads\\Code\\AI4FIN-Tung\\data\\processed\\as_of_inference_log.parquet",
+    "skipped_parquet_path": "C:\\Users\\LaptopK1\\Downloads\\Code\\AI4FIN-Tung\\data\\processed\\skipped_audit_log.parquet",
+    "full_audit_parquet_path": "C:\\Users\\LaptopK1\\Downloads\\Code\\AI4FIN-Tung\\data\\processed\\full_candle_audit_log.parquet",
+    "retrospective_parquet_path": "C:\\Users\\LaptopK1\\Downloads\\Code\\AI4FIN-Tung\\data\\processed\\retrospective_inference_log.parquet",
+    "total_records": 21682,
+    "in_sample_records": 12501,
+    "as_of_replay_records": 8335,
+    "as_of_records": 8335,
+    "skipped_audit_records": 796,
+    "full_audit_records": 21632,
+    "retrospective_records": 50,
+    "unique_in_sample_timestamps": 12501,
+    "unique_as_of_replay_timestamps": 8335,
+    "unique_full_timestamps": 21632
+  }
+}

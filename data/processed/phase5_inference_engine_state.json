@@ -1,0 +1,13 @@
+{
+  "model_version": "GMM_HMM_K3_M3_v1",
+  "parameter_hash": "431e19d3f92e57df",
+  "last_timestamp_utc": "2023-12-29T21:30:00+00:00",
+  "current_posterior": [
+    0.9929456479274844,
+    1.955759857160275e-09,
+    0.007054350116755742
+  ],
+  "step_count": 8385,
+  "skipped_count": 377,
+  "saved_at_utc": "2026-11-03T15:20:57.861909+00:00"
+}
