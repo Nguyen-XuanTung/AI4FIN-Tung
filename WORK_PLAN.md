@@ -415,3 +415,19 @@ Các thông số dưới đây không được ấn định trước mà phải 
 3. **Cấu trúc Mô hình (K, M):** Số lượng trạng thái ngầm $K$ và thành phần hỗn hợp $M$ (nếu dùng GMM) sẽ được đánh giá độc lập. Không ép buộc cấu hình từ các bài báo gốc.
 4. **Chính sách lịch giao dịch (Trading-Calendar Policy):** Quyết định quy tắc tái khởi tạo (reinitialization) hoặc lan truyền xác suất qua các khoảng trống nghỉ lễ dài.
 5. **Chi phí Giao dịch (Trading Costs):** Xác định các giả định Spread, Commission, Slippage dựa trên tài liệu được ghi nhận rõ ràng từ một nguồn broker thực tế. Cấm dùng giả định zero-cost.
+
+## Completion update — 2026-11-09
+
+**Phase 9: implemented and tested.** See
+`data/reports/PHASE9_TRADING_APPLICABILITY_REPORT.md` and
+`data/reports/phase9_trading_results.json`. Train-only turbulence definition,
+validation-only threshold selection, next-open execution, nonzero documented
+costs, continuous test equity and 1x/2x/3x cost scenarios are implemented.
+Both baseline and filtered one-bar strategies lose money after costs.
+
+**Phase 10: research prototype integrated.** See `scripts/run_pipeline.py`,
+`requirements.txt`, updated `README.md`, and
+`data/reports/FINAL_RESEARCH_REPORT.md`. All 102 tests passed; Phase 9 was
+executed on the retained artifacts. Historical phases were not fully refitted.
+The unresolved decisions above remain research extensions; no claim of live
+production readiness, pristine holdout validation or profitable strategy is made.

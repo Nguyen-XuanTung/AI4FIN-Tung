@@ -574,3 +574,19 @@ Phase 8 implements the Historical Market Regime Visualization engine, translatin
 
 
 
+
+## 2026-11-09 — Phase 9/10 completion
+
+- Added causal one-bar momentum baseline and train-defined turbulence filter.
+- Selected threshold 0.25 on validation only; test and cost stress scenarios
+  reuse that threshold. Costs have a broker reference and explicit slippage assumption.
+- Exported reproducible JSON (input hashes and period boundaries), full test
+  equity ledger and Phase 9 report. Both strategies lose money after costs;
+  reduced exposure/loss is not presented as profitable trading value.
+- Added integrated phase runner, recorded dependency versions, current README
+  and final research synthesis. Existing scientific limitations remain explicit.
+- Verification: 102 tests passed in 14.17s; Phase 9 executed successfully.
+  One environment warning concerns physical CPU discovery, with logical-core fallback.
+  Full historical model refitting was not repeated.
+- Cleanup: remove only verified duplicate CSV exports and Python/pytest caches.
+  Preserve raw source archive, immutable JSONL journal, distinct models and reports.

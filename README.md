@@ -1,69 +1,81 @@
-# EURUSD M15 Market Regime Detection Using Hidden Markov Models
+# EURUSD M15 Market Regime Research
 
-## Phase 1: Data Acquisition & Quality Control
+Research prototype for Gaussian HMM and GMM-HMM regimes, causal inference,
+walk-forward evaluation and contextual trading filters on EURUSD 2023.
+Phases 1–10 are implemented; multi-year validation and live broker integration
+remain future work.
 
-### Overview
-This package implements Phase 1 of `WORK_PLAN.md`:
-- **Acquires raw historical data:** Automated, reproducible download of EURUSD 1-minute historical data from HistData, stored unmodified in `data/raw/`.
-- **Timezone Standardization:** Converts raw timestamps from fixed Eastern Standard Time (EST, UTC-5 without DST changes) to standard UTC.
-- **Strict Resampling (M1 to M15):** Aggregates 1-minute bars into 15-minute bars (`open: first`, `high: max`, `low: min`, `close: last`).
-- **Zero Candle Fabrication:** Inactive periods (weekends, holidays, halts) are never interpolated or forward-filled. Gaps are preserved as authentic market interruptions.
-- **Data Quality Audit:** Runs comprehensive integrity checks (monotonic timestamps, duplicate checks, OHLC validity $H \ge \max(O,C)$, $L \le \min(O,C)$, $H \ge L$, price $> 0$) and classifies all time gaps into 4 distinct categories per `WORK_PLAN.md`:
-  - **Class 1:** Single missing 15m bar during active trading session.
-  - **Class 2:** Multiple consecutive missing 15m bars during active trading session.
-  - **Class 3:** Regular market closures (Weekends & global FX holidays).
-  - **Class 4:** Invalid/corrupted OHLC records.
-- **Reporting:** Emits machine-readable JSON (`data/reports/quality_report_*.json`) and Markdown audit reports (`data/reports/DATA_QUALITY_REPORT_*.md`).
+## Install and verify
 
----
+Validated with Python 3.14 and the versions in `requirements.txt`:
 
-### Project Structure
-```
-AI4FIN-Tung/
-├── data/
-│   ├── raw/                  # Unmodified raw data archives (DAT_ASCII_EURUSD_M1_*.zip)
-│   ├── processed/            # Cleaned M15 datasets (.parquet and .csv)
-│   └── reports/              # Data quality audit reports (.json and .md)
-├── papers/                   # 4 primary research reference papers
-├── scripts/
-│   └── run_phase1.py         # End-to-end CLI runner for Phase 1
-├── src/
-│   ├── __init__.py
-│   └── data/
-│       ├── __init__.py
-│       ├── acquire.py        # Reproducible download and raw loading
-│       ├── resample.py       # Strict aggregation without fabrication
-│       └── quality.py        # Validation and gap classification
-├── tests/
-│   ├── __init__.py
-│   └── test_quality.py       # Pytest unit tests for quality checks & resampling
-├── WORK_PLAN.md              # Master research plan
-└── README.md                 # Project documentation
-```
-
----
-
-### How to Run
-
-#### 1. Run Unit Tests
 ```powershell
-python -m pytest -v tests/
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+python -m pip install -r requirements.txt
+New-Item -ItemType Directory -Force tmp | Out-Null
+python -m pytest -q --basetemp=tmp/pytest
 ```
 
-#### 2. Run Phase 1 Data Pipeline (Default: EURUSD 2023)
+On other systems, activate `.venv/bin/activate` and use `mkdir -p tmp`.
+The explicit test directory avoids Windows temporary-directory permission issues.
+
+## Reproduce results
+
+Tracked Parquet data, model JSON, reports and figures allow offline review.
+The default reproduces Phase 9 without downloads or model refitting:
+
 ```powershell
-python scripts/run_phase1.py --pair eurusd --year 2023
+python scripts/run_pipeline.py
 ```
 
-#### 3. Custom Arguments
+Regenerate historical figures and trading evaluation:
+
 ```powershell
-python scripts/run_phase1.py --pair eurusd --year 2022 --format parquet
+python scripts/run_pipeline.py --start-phase 8 --end-phase 9
 ```
-Options:
-- `--pair`: Currency pair (default: `eurusd`).
-- `--year`: Calendar year to process (e.g. `2023`).
-- `--raw-dir`: Directory for raw downloads (default: `data/raw`).
-- `--processed-dir`: Directory for clean M15 data (default: `data/processed`).
-- `--reports-dir`: Directory for audit reports (default: `data/reports`).
-- `--format`: Output format: `parquet`, `csv`, or `both` (default: `both`).
 
+Rebuild all stages (downloads data, refits models and overwrites generated
+artifacts; may take tens of minutes or longer):
+
+```powershell
+python scripts/run_pipeline.py --start-phase 1 --end-phase 9
+```
+
+The runner uses established EURUSD 2023 defaults and stops on the first failure.
+Individual `scripts/run_phaseN.py` entry points remain available. Phase 10 is
+integration/documentation, not a separate fitting stage. Use a fresh checkout
+for full rebuilds: Phase 5 maintains an append-only local inference journal.
+Changing only the year in Phase 1 does not generalize later stages, which contain
+explicit 2023 experiment boundaries.
+
+## Workflow and outputs
+
+| Phase | Purpose | Report |
+| --- | --- | --- |
+| 1 | Acquisition, UTC conversion, gap-aware resampling | [Quality](data/reports/DATA_QUALITY_REPORT_EURUSD_M15_2023.md) |
+| 2 | Features and train-only seasonality | [Features](data/reports/EDA_FEATURE_ENGINEERING_REPORT.md) |
+| 3–4 | Gaussian and mixture HMM comparison | [Gaussian](data/reports/PHASE3_GAUSSIAN_HMM_BASELINE_REPORT.md), [GMM](data/reports/PHASE4_GMM_HMM_REPORT.md) |
+| 5 | Causal replay and versioned storage | [Inference](data/reports/PHASE5_REALTIME_INFERENCE_REPORT.md) |
+| 6 | Interpretation and label alignment | [Interpretation](data/reports/PHASE6_REGIME_INTERPRETATION_REPORT.md) |
+| 7 | Walk-forward evaluation | [Evaluation](data/reports/PHASE7_WALK_FORWARD_REPORT.md) |
+| 8 | Probabilities, entropy and dashboards | [Visualization](data/reports/PHASE8_HISTORICAL_REGIME_VISUALIZATION_REPORT.md) |
+| 9 | Costed baseline vs turbulence filter | [Trading](data/reports/PHASE9_TRADING_APPLICABILITY_REPORT.md) |
+| 10 | Integration and research synthesis | [Final report](data/reports/FINAL_RESEARCH_REPORT.md) |
+
+`src/` contains reusable modules; `scripts/` experiment runners; `tests/` numerical
+and temporal checks. `models/` retains distinct fitted candidates and versioned
+artifacts. `papers/`, `WORK_PLAN.md` and `AI_WORK_LOG.md` preserve research provenance.
+
+## Limitations
+
+Regimes characterize volatility, not buy/sell directions. Real-time-style output
+uses filtered probabilities; smoothing and full-sequence Viterbi are retrospective.
+2023 already informed model research and is not a pristine holdout. Phase 9's
+one-bar momentum hypothesis loses money after costs with and without filtering.
+Reduced losses do not establish profitable trading value.
+
+HistData's fixed UTC−5 interpretation still needs independent DST-boundary checks.
+Costs use current indicative broker terms plus assumed slippage, not historical
+bid/ask fills. Probabilities and entropy describe model-conditional uncertainty.
+See the final report for remaining research questions.

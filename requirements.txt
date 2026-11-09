@@ -1,0 +1,10 @@
+# Versions used for the final validation (Python 3.14).
+numpy==2.4.4
+pandas==3.0.6
+scipy==1.17.1
+scikit-learn==1.8.0
+matplotlib==3.10.8
+seaborn==0.13.2
+pyarrow==26.0.0
+histdata==1.1
+pytest==9.1.1

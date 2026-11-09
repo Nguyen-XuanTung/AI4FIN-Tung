@@ -1,0 +1,152 @@
+{
+  "model_version": "GMM_HMM_K3_M3_v1",
+  "turbulence_state": 1,
+  "threshold": 0.25,
+  "costs": {
+    "spread_pips": 0.1,
+    "commission_per_lot_side": 3.5,
+    "slippage_pips_side": 0.1,
+    "units": 10000,
+    "initial_equity": 10000
+  },
+  "validation": {
+    "0.25": {
+      "bars": 4167,
+      "trades": 3086,
+      "net_profit_usd": -3060.4000000000806,
+      "total_cost_usd": 3086.0,
+      "return_pct": -30.60400000000081,
+      "max_drawdown_pct": 30.671941497333478,
+      "var95_bar_pct": 0.061000000000001046,
+      "es95_bar_pct": 0.08630952380952402
+    },
+    "0.5": {
+      "bars": 4167,
+      "trades": 3270,
+      "net_profit_usd": -3169.400000000087,
+      "total_cost_usd": 3270.0,
+      "return_pct": -31.694000000000873,
+      "max_drawdown_pct": 31.76087434314463,
+      "var95_bar_pct": 0.06469999999999419,
+      "es95_bar_pct": 0.09050717703349284
+    },
+    "0.75": {
+      "bars": 4167,
+      "trades": 3430,
+      "net_profit_usd": -3404.6000000000886,
+      "total_cost_usd": 3430.0,
+      "return_pct": -34.04600000000089,
+      "max_drawdown_pct": 34.11057163979396,
+      "var95_bar_pct": 0.06799999999999584,
+      "es95_bar_pct": 0.09633492822966523
+    }
+  },
+  "test": {
+    "baseline": {
+      "bars": 4168,
+      "trades": 3988,
+      "net_profit_usd": -3916.599999999943,
+      "total_cost_usd": 3988.0,
+      "return_pct": -39.16599999999943,
+      "max_drawdown_pct": 39.266863928984996,
+      "var95_bar_pct": 0.0799999999999923,
+      "es95_bar_pct": 0.11606132075471601
+    },
+    "filtered": {
+      "bars": 4168,
+      "trades": 3140,
+      "net_profit_usd": -3270.899999999965,
+      "total_cost_usd": 3140.0,
+      "return_pct": -32.70899999999965,
+      "max_drawdown_pct": 32.812187612459184,
+      "var95_bar_pct": 0.06300000000001416,
+      "es95_bar_pct": 0.09084761904761843
+    }
+  },
+  "cost_sensitivity": {
+    "1": {
+      "baseline": {
+        "bars": 4168,
+        "trades": 3988,
+        "net_profit_usd": -3916.599999999943,
+        "total_cost_usd": 3988.0,
+        "return_pct": -39.16599999999943,
+        "max_drawdown_pct": 39.266863928984996,
+        "var95_bar_pct": 0.0799999999999923,
+        "es95_bar_pct": 0.11606132075471601
+      },
+      "filtered": {
+        "bars": 4168,
+        "trades": 3140,
+        "net_profit_usd": -3270.899999999965,
+        "total_cost_usd": 3140.0,
+        "return_pct": -32.70899999999965,
+        "max_drawdown_pct": 32.812187612459184,
+        "var95_bar_pct": 0.06300000000001416,
+        "es95_bar_pct": 0.09084761904761843
+      }
+    },
+    "2": {
+      "baseline": {
+        "bars": 4168,
+        "trades": 3988,
+        "net_profit_usd": -7904.599999999942,
+        "total_cost_usd": 7976.0,
+        "return_pct": -79.04599999999942,
+        "max_drawdown_pct": 79.07499999999946,
+        "var95_bar_pct": 0.0899999999999923,
+        "es95_bar_pct": 0.1260613207547161
+      },
+      "filtered": {
+        "bars": 4168,
+        "trades": 3140,
+        "net_profit_usd": -6410.899999999965,
+        "total_cost_usd": 6280.0,
+        "return_pct": -64.10899999999965,
+        "max_drawdown_pct": 64.13799999999968,
+        "var95_bar_pct": 0.07300000000001415,
+        "es95_bar_pct": 0.10084761904761844
+      }
+    },
+    "3": {
+      "baseline": {
+        "bars": 4168,
+        "trades": 3988,
+        "net_profit_usd": -11892.599999999944,
+        "total_cost_usd": 11964.000000000002,
+        "return_pct": -118.92599999999945,
+        "max_drawdown_pct": 118.92599999999977,
+        "var95_bar_pct": 0.09999999999999229,
+        "es95_bar_pct": 0.13606132075471603
+      },
+      "filtered": {
+        "bars": 4168,
+        "trades": 3140,
+        "net_profit_usd": -9550.899999999965,
+        "total_cost_usd": 9420.000000000002,
+        "return_pct": -95.50899999999966,
+        "max_drawdown_pct": 95.5089999999998,
+        "var95_bar_pct": 0.08300000000001415,
+        "es95_bar_pct": 0.11084761904761843
+      }
+    }
+  },
+  "periods": {
+    "val": {
+      "start": "2023-08-24 12:00:00+00:00",
+      "end": "2023-10-27 00:45:00+00:00",
+      "bars": 4167
+    },
+    "test": {
+      "start": "2023-10-27 01:00:00+00:00",
+      "end": "2023-12-29 21:30:00+00:00",
+      "bars": 4168
+    }
+  },
+  "input_sha256": {
+    "models\\GMM_HMM_K3_M3_v1.json": "70ba7b3e1906e9c54a55a21daa38d117b8a4ddd82eaf9bf368713748f8b5a9fa",
+    "data\\reports\\regime_characteristics_train.json": "2419023f2e9afe3d55c4f77dbd0ed31b400511cf03e035da1fa369349c2b9394",
+    "data\\processed\\EURUSD_M15_2023.parquet": "3be7e3a601a364f54a248c2f41f4e5bc45ec78a2a2d0e9367a3fe7d540c8d46b",
+    "data\\processed\\as_of_replay_inference_log.parquet": "70a2cee8d20bad6401b70fac8c5561871383d96fcf319300b9af0bff05fc0a46"
+  }
+}
