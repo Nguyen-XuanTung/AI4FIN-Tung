@@ -1,0 +1,252 @@
+{
+  "metadata": {
+    "title": "Phase 8 Historical Regime Visualization Summary",
+    "execution_timestamp_utc": "2026-11-09T04:06:05.813516+00:00",
+    "canonical_model_version": "GMM_HMM_K3_M3_v1",
+    "canonical_model_hash": "431e19d3f92e57df",
+    "feature_names": [
+      "r_oc",
+      "log_vol"
+    ],
+    "state_labels": {
+      "0": "LowVol_Neutral",
+      "1": "HighVol_Neutral",
+      "2": "MedVol_Neutral"
+    }
+  },
+  "mode_a_full_year_retrospective": {
+    "total_complete_bars": 20836,
+    "start_timestamp_utc": "2023-01-01 23:30:00+00:00",
+    "end_timestamp_utc": "2023-12-29 21:30:00+00:00",
+    "partition_counts": {
+      "train_in_sample": 12501,
+      "replay_out_of_sample": 8335
+    },
+    "state_occupancy_bars": {
+      "2": 9684,
+      "0": 6921,
+      "1": 4231
+    },
+    "state_occupancy_fraction": {
+      "MedVol_Neutral": 0.4647725091188328,
+      "LowVol_Neutral": 0.3321654828181993,
+      "HighVol_Neutral": 0.20306200806296795
+    },
+    "entropy_metrics": {
+      "mean_shannon_nats": 0.31357756032465967,
+      "median_shannon_nats": 0.28650584875706286,
+      "p90_shannon_nats": 0.6624850554512173,
+      "mean_normalized": 0.2854305959974487,
+      "median_normalized": 0.2607888621966945,
+      "p90_normalized": 0.6030198845257535
+    },
+    "transition_dynamics": {
+      "total_within_session_switches": 3647,
+      "total_within_session_adjacent_pairs": 19686,
+      "switching_frequency": 0.18525855938230215,
+      "transition_count_matrix": [
+        [
+          5269,
+          12,
+          1027
+        ],
+        [
+          6,
+          3257,
+          786
+        ],
+        [
+          1020,
+          796,
+          7513
+        ]
+      ],
+      "transition_prob_matrix": [
+        [
+          0.835288522511097,
+          0.0019023462270133164,
+          0.16280913126188967
+        ],
+        [
+          0.0014818473697209187,
+          0.8043961471968387,
+          0.19412200543344035
+        ],
+        [
+          0.10933647765033766,
+          0.08532532961732232,
+          0.80533819273234
+        ]
+      ]
+    },
+    "duration_metrics_decoupled": {
+      "theoretical_markov_duration_bars": {
+        "LowVol_Neutral": 7.777362865656745,
+        "HighVol_Neutral": 8.753085484542835,
+        "MedVol_Neutral": 6.93608253879691
+      },
+      "retrospective_viterbi_duration_bars": {
+        "LowVol_Neutral": 5.6,
+        "HighVol_Neutral": 7.5,
+        "MedVol_Neutral": 6.8
+      },
+      "causal_filtered_empirical_mean_bars": {
+        "LowVol_Neutral": 4.189467312348668,
+        "HighVol_Neutral": 4.34394250513347,
+        "MedVol_Neutral": 4.460617227084293
+      },
+      "causal_filtered_empirical_median_bars": {
+        "LowVol_Neutral": 3.0,
+        "HighVol_Neutral": 3.0,
+        "MedVol_Neutral": 3.0
+      },
+      "causal_filtered_empirical_p90_bars": {
+        "LowVol_Neutral": 10.0,
+        "HighVol_Neutral": 11.0,
+        "MedVol_Neutral": 10.0
+      }
+    },
+    "physical_characteristics": {
+      "LowVol_Neutral": {
+        "return_mean_bps": 0.023390735290859554,
+        "return_std_bps": 1.617531923406464,
+        "pip_range_mean": 3.082675913885271,
+        "pip_range_median": 2.9999999999996696,
+        "log_vol_mean": -8.228232224617667
+      },
+      "HighVol_Neutral": {
+        "return_mean_bps": 0.13908456418064472,
+        "return_std_bps": 8.657940374933268,
+        "pip_range_mean": 13.19721106121484,
+        "pip_range_median": 11.400000000001409,
+        "log_vol_mean": -6.799964151076189
+      },
+      "MedVol_Neutral": {
+        "return_mean_bps": -0.10549829415566776,
+        "return_std_bps": 3.7798411228490743,
+        "pip_range_mean": 6.432001239157368,
+        "pip_range_median": 6.099999999999994,
+        "log_vol_mean": -7.474110937856987
+      }
+    }
+  },
+  "mode_b_as_of_replay": {
+    "total_complete_bars": 8335,
+    "start_timestamp_utc": "2023-08-24 12:00:00+00:00",
+    "end_timestamp_utc": "2023-12-29 21:30:00+00:00",
+    "state_occupancy_bars": {
+      "2": 3934,
+      "0": 3038,
+      "1": 1363
+    },
+    "state_occupancy_fraction": {
+      "MedVol_Neutral": 0.4719856028794241,
+      "LowVol_Neutral": 0.3644871025794841,
+      "HighVol_Neutral": 0.16352729454109177
+    },
+    "entropy_metrics": {
+      "mean_shannon_nats": 0.2995633004786922,
+      "median_shannon_nats": 0.26942408803211365,
+      "p90_shannon_nats": 0.6559972931938337,
+      "mean_normalized": 0.27267426695350766,
+      "median_normalized": 0.24524037352499206,
+      "p90_normalized": 0.5971144688260539
+    },
+    "transition_dynamics": {
+      "total_within_session_switches": 1403,
+      "total_within_session_adjacent_pairs": 8060,
+      "switching_frequency": 0.17406947890818858,
+      "transition_count_matrix": [
+        [
+          2376,
+          5,
+          423
+        ],
+        [
+          1,
+          1078,
+          279
+        ],
+        [
+          422,
+          273,
+          3203
+        ]
+      ],
+      "transition_prob_matrix": [
+        [
+          0.8473609129814551,
+          0.001783166904422254,
+          0.1508559201141227
+        ],
+        [
+          0.0007363770250368188,
+          0.7938144329896907,
+          0.20544918998527245
+        ],
+        [
+          0.10826064648537712,
+          0.07003591585428424,
+          0.8217034376603386
+        ]
+      ]
+    },
+    "duration_metrics_decoupled": {
+      "theoretical_markov_duration_bars": {
+        "LowVol_Neutral": 7.777362865656745,
+        "HighVol_Neutral": 8.753085484542835,
+        "MedVol_Neutral": 6.93608253879691
+      },
+      "causal_filtered_empirical_mean_bars": {
+        "LowVol_Neutral": 4.589123867069486,
+        "HighVol_Neutral": 4.782456140350877,
+        "MedVol_Neutral": 5.381668946648427
+      },
+      "causal_filtered_empirical_median_bars": {
+        "LowVol_Neutral": 3.0,
+        "HighVol_Neutral": 3.0,
+        "MedVol_Neutral": 3.0
+      },
+      "causal_filtered_empirical_p90_bars": {
+        "LowVol_Neutral": 11.0,
+        "HighVol_Neutral": 12.0,
+        "MedVol_Neutral": 12.0
+      }
+    },
+    "physical_characteristics": {
+      "LowVol_Neutral": {
+        "return_mean_bps": 0.03868782174365217,
+        "return_std_bps": 1.5681922805571065,
+        "pip_range_mean": 2.992264647794588,
+        "pip_range_median": 2.8999999999990145,
+        "log_vol_mean": -8.255787492583831
+      },
+      "HighVol_Neutral": {
+        "return_mean_bps": 0.45850214547515356,
+        "return_std_bps": 8.865501142147075,
+        "pip_range_mean": 13.007776962582522,
+        "pip_range_median": 11.200000000000099,
+        "log_vol_mean": -6.811736781976113
+      },
+      "MedVol_Neutral": {
+        "return_mean_bps": -0.16683493070642225,
+        "return_std_bps": 3.818670797907175,
+        "pip_range_mean": 6.390442297915585,
+        "pip_range_median": 6.00000000000156,
+        "log_vol_mean": -7.474295019328974
+      }
+    }
+  },
+  "figure_paths": {
+    "fig21": "data\\reports\\figures\\21_historical_price_and_regime_timeline_full_year.png",
+    "fig22": "data\\reports\\figures\\22_filtered_regime_probabilities_full_year.png",
+    "fig23": "data\\reports\\figures\\23_regime_confidence_and_entropy_full_year.png",
+    "fig24": "data\\reports\\figures\\24_regime_transition_and_duration_full_year.png",
+    "fig25": "data\\reports\\figures\\25_regime_characteristics_crosscheck_full_year.png",
+    "fig26": "data\\reports\\figures\\26_composite_regime_dashboard_full_year.png",
+    "fig27": "data\\reports\\figures\\27_historical_price_and_regime_timeline_replay.png",
+    "fig28": "data\\reports\\figures\\28_filtered_regime_probabilities_replay.png",
+    "fig29": "data\\reports\\figures\\29_regime_confidence_and_entropy_replay.png",
+    "fig30": "data\\reports\\figures\\30_composite_regime_dashboard_replay.png"
+  }
+}

@@ -31,8 +31,9 @@ Desktop.ini
 data/raw/*.zip
 data/raw/*.csv
 
-# Processed CSVs (redundant with parquet artifacts)
+# Processed CSVs and raw bulky logs (redundant with parquet artifacts)
 data/processed/*.csv
+data/processed/*.jsonl
 
 # Temporary scratch scripts
 scratch/
