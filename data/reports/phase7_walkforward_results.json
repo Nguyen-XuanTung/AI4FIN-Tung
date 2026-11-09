@@ -1,0 +1,2835 @@
+{
+  "metadata": {
+    "title": "Phase 7 Out-of-Sample Walk-Forward Validation & Cross-Regime Robustness",
+    "execution_timestamp_utc": "2026-11-09T03:42:41.101742+00:00",
+    "total_fits_executed": 30,
+    "total_wall_clock_seconds": 1320.6,
+    "total_wall_clock_minutes": 22.01,
+    "base_random_state": 42,
+    "n_restarts": 5
+  },
+  "fit_provenance": [
+    {
+      "fit_index": 1,
+      "fold_id": 1,
+      "model_name": "Gaussian_HMM_K3_M1",
+      "category": "primary",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        143,
+        244,
+        345,
+        446
+      ],
+      "parameter_sha256": "8b3079bb9dfa75d8",
+      "best_log_likelihood": 55512.94908393091,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 30.64
+    },
+    {
+      "fit_index": 2,
+      "fold_id": 1,
+      "model_name": "GMM_HMM_K3_M2",
+      "category": "primary",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "d41ea813862b1fdf",
+      "best_log_likelihood": 56572.004903981906,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 27.94
+    },
+    {
+      "fit_index": 3,
+      "fold_id": 1,
+      "model_name": "GMM_HMM_K3_M3_cov1e-3",
+      "category": "primary_and_anchor",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "fbf38849d4631d09",
+      "best_log_likelihood": 57966.550739141516,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 29.66
+    },
+    {
+      "fit_index": 4,
+      "fold_id": 1,
+      "model_name": "GMM_HMM_K3_M3_cov1e-4",
+      "category": "cov_reg_sensitivity",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "724bd960cc103dd9",
+      "best_log_likelihood": 57972.75959114985,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 33.52
+    },
+    {
+      "fit_index": 5,
+      "fold_id": 1,
+      "model_name": "GMM_HMM_K3_M3_cov1e-2",
+      "category": "cov_reg_sensitivity",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "751543551ef647b2",
+      "best_log_likelihood": 57784.91904149026,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 38.12
+    },
+    {
+      "fit_index": 6,
+      "fold_id": 1,
+      "model_name": "GMM_HMM_K3_M3_diurnal",
+      "category": "diurnal_sensitivity",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "91be5c3973fca88f",
+      "best_log_likelihood": 48555.742958785464,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 37.77
+    },
+    {
+      "fit_index": 7,
+      "fold_id": 2,
+      "model_name": "Gaussian_HMM_K3_M1",
+      "category": "primary",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        143,
+        244,
+        345,
+        446
+      ],
+      "parameter_sha256": "c60b6b44f9eaad8f",
+      "best_log_likelihood": 63889.88646192652,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 39.99
+    },
+    {
+      "fit_index": 8,
+      "fold_id": 2,
+      "model_name": "GMM_HMM_K3_M2",
+      "category": "primary",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "ade5ff2e86fa0cc7",
+      "best_log_likelihood": 65089.20761745307,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 44.6
+    },
+    {
+      "fit_index": 9,
+      "fold_id": 2,
+      "model_name": "GMM_HMM_K3_M3_cov1e-3",
+      "category": "primary_and_anchor",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "c8f2aa3a4d0257de",
+      "best_log_likelihood": 66501.30451895951,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 43.5
+    },
+    {
+      "fit_index": 10,
+      "fold_id": 2,
+      "model_name": "GMM_HMM_K3_M3_cov1e-4",
+      "category": "cov_reg_sensitivity",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "117b9a2cd3e9c989",
+      "best_log_likelihood": 66132.95625262463,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 40.71
+    },
+    {
+      "fit_index": 11,
+      "fold_id": 2,
+      "model_name": "GMM_HMM_K3_M3_cov1e-2",
+      "category": "cov_reg_sensitivity",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "9ad61409484a8e44",
+      "best_log_likelihood": 66481.10466971902,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 42.01
+    },
+    {
+      "fit_index": 12,
+      "fold_id": 2,
+      "model_name": "GMM_HMM_K3_M3_diurnal",
+      "category": "diurnal_sensitivity",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "474639e3154613a1",
+      "best_log_likelihood": 55894.85073852815,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 35.91
+    },
+    {
+      "fit_index": 13,
+      "fold_id": 3,
+      "model_name": "Gaussian_HMM_K3_M1",
+      "category": "primary",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        143,
+        244,
+        345,
+        446
+      ],
+      "parameter_sha256": "c1b0872ee7ace49f",
+      "best_log_likelihood": 76554.92088731393,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 36.97
+    },
+    {
+      "fit_index": 14,
+      "fold_id": 3,
+      "model_name": "GMM_HMM_K3_M2",
+      "category": "primary",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "b7011ff601583c0a",
+      "best_log_likelihood": 77998.10268251658,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 38.62
+    },
+    {
+      "fit_index": 15,
+      "fold_id": 3,
+      "model_name": "GMM_HMM_K3_M3_cov1e-3",
+      "category": "primary_and_anchor",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "9fd3ed21d2d4411a",
+      "best_log_likelihood": 79817.56807084825,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 37.32
+    },
+    {
+      "fit_index": 16,
+      "fold_id": 3,
+      "model_name": "GMM_HMM_K3_M3_cov1e-4",
+      "category": "cov_reg_sensitivity",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "eed7d27321ff1299",
+      "best_log_likelihood": 79820.91497421179,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 40.47
+    },
+    {
+      "fit_index": 17,
+      "fold_id": 3,
+      "model_name": "GMM_HMM_K3_M3_cov1e-2",
+      "category": "cov_reg_sensitivity",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "3e1d84f881b80a9b",
+      "best_log_likelihood": 79568.77905219098,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 38.74
+    },
+    {
+      "fit_index": 18,
+      "fold_id": 3,
+      "model_name": "GMM_HMM_K3_M3_diurnal",
+      "category": "diurnal_sensitivity",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "c8ba70e196c35508",
+      "best_log_likelihood": 66887.93959888042,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 37.65
+    },
+    {
+      "fit_index": 19,
+      "fold_id": 4,
+      "model_name": "Gaussian_HMM_K3_M1",
+      "category": "primary",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        143,
+        244,
+        345,
+        446
+      ],
+      "parameter_sha256": "7c4fe5e105479500",
+      "best_log_likelihood": 87827.60040806033,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 39.11
+    },
+    {
+      "fit_index": 20,
+      "fold_id": 4,
+      "model_name": "GMM_HMM_K3_M2",
+      "category": "primary",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "9097a122885c009f",
+      "best_log_likelihood": 89480.00168842572,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 43.59
+    },
+    {
+      "fit_index": 21,
+      "fold_id": 4,
+      "model_name": "GMM_HMM_K3_M3_cov1e-3",
+      "category": "primary_and_anchor",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "51e718fcb762833c",
+      "best_log_likelihood": 90889.23503654322,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 62.53
+    },
+    {
+      "fit_index": 22,
+      "fold_id": 4,
+      "model_name": "GMM_HMM_K3_M3_cov1e-4",
+      "category": "cov_reg_sensitivity",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "cf45b09e218abe86",
+      "best_log_likelihood": 90893.3047367125,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 44.18
+    },
+    {
+      "fit_index": 23,
+      "fold_id": 4,
+      "model_name": "GMM_HMM_K3_M3_cov1e-2",
+      "category": "cov_reg_sensitivity",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "263bfcf18670c30b",
+      "best_log_likelihood": 91529.65383464812,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 45.22
+    },
+    {
+      "fit_index": 24,
+      "fold_id": 4,
+      "model_name": "GMM_HMM_K3_M3_diurnal",
+      "category": "diurnal_sensitivity",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "4e3d5e271a16f03e",
+      "best_log_likelihood": 76850.1636644563,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 44.07
+    },
+    {
+      "fit_index": 25,
+      "fold_id": 5,
+      "model_name": "Gaussian_HMM_K3_M1",
+      "category": "primary",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        143,
+        244,
+        345,
+        446
+      ],
+      "parameter_sha256": "7673362bac8993d9",
+      "best_log_likelihood": 100099.90028555431,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 50.0
+    },
+    {
+      "fit_index": 26,
+      "fold_id": 5,
+      "model_name": "GMM_HMM_K3_M2",
+      "category": "primary",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "281db33d3b8acb5c",
+      "best_log_likelihood": 101986.4698110399,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 50.56
+    },
+    {
+      "fit_index": 27,
+      "fold_id": 5,
+      "model_name": "GMM_HMM_K3_M3_cov1e-3",
+      "category": "primary_and_anchor",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "f19280b8c17857bd",
+      "best_log_likelihood": 103373.21710562576,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 50.5
+    },
+    {
+      "fit_index": 28,
+      "fold_id": 5,
+      "model_name": "GMM_HMM_K3_M3_cov1e-4",
+      "category": "cov_reg_sensitivity",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "90d81664c2cb8e0c",
+      "best_log_likelihood": 103380.39581350444,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 49.76
+    },
+    {
+      "fit_index": 29,
+      "fold_id": 5,
+      "model_name": "GMM_HMM_K3_M3_cov1e-2",
+      "category": "cov_reg_sensitivity",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "ac00a8772b025bd2",
+      "best_log_likelihood": 104246.82815150058,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 50.76
+    },
+    {
+      "fit_index": 30,
+      "fold_id": 5,
+      "model_name": "GMM_HMM_K3_M3_diurnal",
+      "category": "diurnal_sensitivity",
+      "base_random_state": 42,
+      "n_restarts": 5,
+      "restart_seed_schedule": [
+        42,
+        149,
+        256,
+        363,
+        470
+      ],
+      "parameter_sha256": "707da1b6de8f4081",
+      "best_log_likelihood": 87540.62382748518,
+      "n_iter_done": 36,
+      "converged": false,
+      "reached_max_iter": true,
+      "training_time_seconds": 50.96
+    }
+  ],
+  "fold_results": {
+    "1": {
+      "fold_id": 1,
+      "train_start": "2023-01-01T23:30:00+00:00",
+      "train_end": "2023-06-30T21:45:00+00:00",
+      "train_bars": 9472,
+      "val_start": "2023-07-02T23:00:00+00:00",
+      "val_end": "2023-07-31T23:30:00+00:00",
+      "val_bars": 1414,
+      "test_start": "2023-08-01T00:00:00+00:00",
+      "test_end": "2023-08-31T23:30:00+00:00",
+      "test_bars": 2120,
+      "models": {
+        "Gaussian_HMM_K3_M1": {
+          "category": "primary",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 8382.72,
+          "val_mean_pred_ll_pol_a": 5.92837,
+          "val_total_pred_ll_pol_b": 8382.72,
+          "val_mean_pred_ll_pol_b": 5.92837,
+          "test_total_pred_ll_pol_a": 12656.32,
+          "test_mean_pred_ll_pol_a": 5.96996,
+          "test_total_pred_ll_pol_b": 12655.97,
+          "test_mean_pred_ll_pol_b": 5.9698,
+          "policy_a_vs_b_delta_test_nats": 0.347,
+          "test_switch_frequency": 0.2563,
+          "test_mean_entropy": 0.2738,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.7537,
+            "max_cost": 1.2223,
+            "global_gap": 3.2069,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 1,
+              "1": 0,
+              "2": 2
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.00017249561037524852,
+              "aligned_med_vol": 0.000376665892983727,
+              "aligned_high_vol": 0.0010183353799269794
+            }
+          },
+          "transition_matrix": [
+            [
+              0.7142938918771295,
+              1.8185161142518475e-06,
+              0.28570428960675615
+            ],
+            [
+              0.0004333742991786097,
+              0.8554277384550046,
+              0.14413888724581686
+            ],
+            [
+              0.11249136125861475,
+              0.10689628946352216,
+              0.780612349277863
+            ]
+          ],
+          "initial_distribution": [
+            0.1410201256935277,
+            0.52820220576365,
+            0.3307776685428223
+          ]
+        },
+        "GMM_HMM_K3_M2": {
+          "category": "primary",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 8535.49,
+          "val_mean_pred_ll_pol_a": 6.03642,
+          "val_total_pred_ll_pol_b": 8535.49,
+          "val_mean_pred_ll_pol_b": 6.03642,
+          "test_total_pred_ll_pol_a": 12916.94,
+          "test_mean_pred_ll_pol_a": 6.0929,
+          "test_total_pred_ll_pol_b": 12916.52,
+          "test_mean_pred_ll_pol_b": 6.0927,
+          "policy_a_vs_b_delta_test_nats": 0.423,
+          "test_switch_frequency": 0.2133,
+          "test_mean_entropy": 0.2923,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.6056,
+            "max_cost": 0.8116,
+            "global_gap": 3.1434,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 2,
+              "1": 1,
+              "2": 0
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.00018274747976198757,
+              "aligned_med_vol": 0.0003672608380445995,
+              "aligned_high_vol": 0.0009243801860001714
+            }
+          },
+          "transition_matrix": [
+            [
+              0.8113919863228976,
+              0.10218168123326057,
+              0.08642633244384175
+            ],
+            [
+              0.18936854024477018,
+              0.8106299044825516,
+              1.5552726781000231e-06
+            ],
+            [
+              0.12036759512881384,
+              1.5366141110038576e-05,
+              0.8796170387300761
+            ]
+          ],
+          "initial_distribution": [
+            0.3145596137924404,
+            0.1719425862135329,
+            0.5134977999940268
+          ]
+        },
+        "GMM_HMM_K3_M3_cov1e-3": {
+          "category": "primary_and_anchor",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 8756.45,
+          "val_mean_pred_ll_pol_a": 6.19268,
+          "val_total_pred_ll_pol_b": 8756.45,
+          "val_mean_pred_ll_pol_b": 6.19268,
+          "test_total_pred_ll_pol_a": 13262.56,
+          "test_mean_pred_ll_pol_a": 6.25593,
+          "test_total_pred_ll_pol_b": 13262.1,
+          "test_mean_pred_ll_pol_b": 6.25571,
+          "policy_a_vs_b_delta_test_nats": 0.461,
+          "test_switch_frequency": 0.194,
+          "test_mean_entropy": 0.3126,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.2736,
+            "max_cost": 0.3268,
+            "global_gap": 3.1459,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 1,
+              "1": 2,
+              "2": 0
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.0001726687104826047,
+              "aligned_med_vol": 0.00038289839516386816,
+              "aligned_high_vol": 0.0008265636430534044
+            }
+          },
+          "transition_matrix": [
+            [
+              0.8983213872827595,
+              0.10167727820022086,
+              1.3345170196457139e-06
+            ],
+            [
+              0.07248442658528922,
+              0.8394358403115556,
+              0.08807973310315513
+            ],
+            [
+              2.19011457322269e-06,
+              0.13717361718211424,
+              0.8628241927033126
+            ]
+          ],
+          "initial_distribution": [
+            0.20487296771654157,
+            0.3179239163871755,
+            0.47720311589628295
+          ]
+        },
+        "GMM_HMM_K3_M3_cov1e-4": {
+          "category": "cov_reg_sensitivity",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 8756.49,
+          "val_mean_pred_ll_pol_a": 6.19271,
+          "val_total_pred_ll_pol_b": 8756.49,
+          "val_mean_pred_ll_pol_b": 6.19271,
+          "test_total_pred_ll_pol_a": 13261.05,
+          "test_mean_pred_ll_pol_a": 6.25521,
+          "test_total_pred_ll_pol_b": 13260.59,
+          "test_mean_pred_ll_pol_b": 6.25499,
+          "policy_a_vs_b_delta_test_nats": 0.459,
+          "test_switch_frequency": 0.1968,
+          "test_mean_entropy": 0.3109,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.2741,
+            "max_cost": 0.3164,
+            "global_gap": 3.1146,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 1,
+              "1": 2,
+              "2": 0
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.00017165602697810203,
+              "aligned_med_vol": 0.00038344810957344986,
+              "aligned_high_vol": 0.0008244460274013251
+            }
+          },
+          "transition_matrix": [
+            [
+              0.8988649653156418,
+              0.10113369722007655,
+              1.3374642818221374e-06
+            ],
+            [
+              0.07220606307228808,
+              0.8379012685734756,
+              0.08989266835423645
+            ],
+            [
+              2.1112069748998682e-06,
+              0.14049743318357646,
+              0.8595004556094487
+            ]
+          ],
+          "initial_distribution": [
+            0.20489265403066267,
+            0.32054656051624153,
+            0.4745607854530958
+          ]
+        },
+        "GMM_HMM_K3_M3_cov1e-2": {
+          "category": "cov_reg_sensitivity",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 8740.08,
+          "val_mean_pred_ll_pol_a": 6.1811,
+          "val_total_pred_ll_pol_b": 8740.08,
+          "val_mean_pred_ll_pol_b": 6.1811,
+          "test_total_pred_ll_pol_a": 13218.49,
+          "test_mean_pred_ll_pol_a": 6.23514,
+          "test_total_pred_ll_pol_b": 13218.03,
+          "test_mean_pred_ll_pol_b": 6.23492,
+          "policy_a_vs_b_delta_test_nats": 0.465,
+          "test_switch_frequency": 0.1661,
+          "test_mean_entropy": 0.3049,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.4459,
+            "max_cost": 0.6096,
+            "global_gap": 3.0908,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 1,
+              "1": 2,
+              "2": 0
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.00018398836949481913,
+              "aligned_med_vol": 0.000402172161260202,
+              "aligned_high_vol": 0.0008812636004159441
+            }
+          },
+          "transition_matrix": [
+            [
+              0.8919471767031166,
+              0.10805150216710219,
+              1.3211297811910966e-06
+            ],
+            [
+              0.06153662993760927,
+              0.8685717998165335,
+              0.06989157024585724
+            ],
+            [
+              2.9733071660702206e-06,
+              0.10840320472812645,
+              0.8915938219647075
+            ]
+          ],
+          "initial_distribution": [
+            0.1640960887171888,
+            0.33200610685404774,
+            0.5038978044287635
+          ]
+        },
+        "GMM_HMM_K3_M3_diurnal": {
+          "category": "diurnal_sensitivity",
+          "features": [
+            "r_oc",
+            "range_zscore"
+          ],
+          "val_total_pred_ll_pol_a": 7492.18,
+          "val_mean_pred_ll_pol_a": 5.29857,
+          "val_total_pred_ll_pol_b": 7492.18,
+          "val_mean_pred_ll_pol_b": 5.29857,
+          "test_total_pred_ll_pol_a": 11384.42,
+          "test_mean_pred_ll_pol_a": 5.37001,
+          "test_total_pred_ll_pol_b": 11384.35,
+          "test_mean_pred_ll_pol_b": 5.36997,
+          "policy_a_vs_b_delta_test_nats": 0.077,
+          "test_switch_frequency": 0.1227,
+          "test_mean_entropy": 0.3311,
+          "alignment": {
+            "match_rate": 0.0,
+            "avg_cost": 0.0,
+            "max_cost": 0.0,
+            "global_gap": 0.4942,
+            "is_ambiguous": false,
+            "matched_mapping": {},
+            "volatility_monotonic": false,
+            "sigma_returns": {
+              "aligned_low_vol": null,
+              "aligned_med_vol": null,
+              "aligned_high_vol": null
+            }
+          },
+          "transition_matrix": [
+            [
+              0.8958353701697639,
+              0.022883651181550977,
+              0.08128097864868533
+            ],
+            [
+              0.3315220057295165,
+              0.6684744462203777,
+              3.5480501058429538e-06
+            ],
+            [
+              0.05738016074901752,
+              0.006668536052469949,
+              0.9359513031985125
+            ]
+          ],
+          "initial_distribution": [
+            0.1601403520747137,
+            0.040454810498759194,
+            0.7994048374265271
+          ]
+        }
+      },
+      "pairwise_comparisons": {
+        "lag_4": {
+          "M3_vs_M1": {
+            "mean_loss_diff_nats": 0.285966,
+            "hac_variance": 0.44682,
+            "dm_statistic_hln": 19.6931,
+            "raw_p_value": 2.4717595554518998e-86,
+            "holm_adjusted_p_value": 7.4152786663557e-86,
+            "is_significant_adj_05": true
+          },
+          "M2_vs_M1": {
+            "mean_loss_diff_nats": 0.122936,
+            "hac_variance": 0.243298,
+            "dm_statistic_hln": 11.473,
+            "raw_p_value": 1.802816881217177e-30,
+            "holm_adjusted_p_value": 1.802816881217177e-30,
+            "is_significant_adj_05": true
+          },
+          "M3_vs_M2": {
+            "mean_loss_diff_nats": 0.16303,
+            "hac_variance": 0.249226,
+            "dm_statistic_hln": 15.0327,
+            "raw_p_value": 4.4861635909207344e-51,
+            "holm_adjusted_p_value": 8.972327181841469e-51,
+            "is_significant_adj_05": true
+          }
+        },
+        "lag_8": {
+          "M3_vs_M1": {
+            "mean_loss_diff_nats": 0.285966,
+            "hac_variance": 0.434252,
+            "dm_statistic_hln": 19.976,
+            "raw_p_value": 8.903493917614383e-89,
+            "holm_adjusted_p_value": 2.671048175284315e-88,
+            "is_significant_adj_05": true
+          },
+          "M2_vs_M1": {
+            "mean_loss_diff_nats": 0.122936,
+            "hac_variance": 0.229082,
+            "dm_statistic_hln": 11.8236,
+            "raw_p_value": 2.947306427841457e-32,
+            "holm_adjusted_p_value": 2.947306427841457e-32,
+            "is_significant_adj_05": true
+          },
+          "M3_vs_M2": {
+            "mean_loss_diff_nats": 0.16303,
+            "hac_variance": 0.258817,
+            "dm_statistic_hln": 14.7515,
+            "raw_p_value": 3.0095111579028185e-49,
+            "holm_adjusted_p_value": 6.019022315805637e-49,
+            "is_significant_adj_05": true
+          }
+        },
+        "lag_16": {
+          "M3_vs_M1": {
+            "mean_loss_diff_nats": 0.285966,
+            "hac_variance": 0.404237,
+            "dm_statistic_hln": 20.7044,
+            "raw_p_value": 3.1638580799024594e-95,
+            "holm_adjusted_p_value": 9.491574239707379e-95,
+            "is_significant_adj_05": true
+          },
+          "M2_vs_M1": {
+            "mean_loss_diff_nats": 0.122936,
+            "hac_variance": 0.203903,
+            "dm_statistic_hln": 12.5324,
+            "raw_p_value": 4.962671850835318e-36,
+            "holm_adjusted_p_value": 4.962671850835318e-36,
+            "is_significant_adj_05": true
+          },
+          "M3_vs_M2": {
+            "mean_loss_diff_nats": 0.16303,
+            "hac_variance": 0.268877,
+            "dm_statistic_hln": 14.4729,
+            "raw_p_value": 1.7973218492528777e-47,
+            "holm_adjusted_p_value": 3.5946436985057555e-47,
+            "is_significant_adj_05": true
+          }
+        }
+      }
+    },
+    "2": {
+      "fold_id": 2,
+      "train_start": "2023-01-01T23:30:00+00:00",
+      "train_end": "2023-07-31T23:30:00+00:00",
+      "train_bars": 10886,
+      "val_start": "2023-08-01T00:00:00+00:00",
+      "val_end": "2023-08-31T23:30:00+00:00",
+      "val_bars": 2120,
+      "test_start": "2023-09-01T00:00:00+00:00",
+      "test_end": "2023-09-29T21:45:00+00:00",
+      "test_bars": 1887,
+      "models": {
+        "Gaussian_HMM_K3_M1": {
+          "category": "primary",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 12666.26,
+          "val_mean_pred_ll_pol_a": 5.97465,
+          "val_total_pred_ll_pol_b": 12665.92,
+          "val_mean_pred_ll_pol_b": 5.97449,
+          "test_total_pred_ll_pol_a": 11258.45,
+          "test_mean_pred_ll_pol_a": 5.96632,
+          "test_total_pred_ll_pol_b": 11258.11,
+          "test_mean_pred_ll_pol_b": 5.96614,
+          "policy_a_vs_b_delta_test_nats": 0.338,
+          "test_switch_frequency": 0.2678,
+          "test_mean_entropy": 0.2776,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.6926,
+            "max_cost": 1.1002,
+            "global_gap": 3.3095,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 1,
+              "1": 0,
+              "2": 2
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.00017178208370621816,
+              "aligned_med_vol": 0.0003732089241468793,
+              "aligned_high_vol": 0.0010076777781097591
+            }
+          },
+          "transition_matrix": [
+            [
+              0.7063878048760215,
+              2.0024038352264226e-06,
+              0.2936101927201433
+            ],
+            [
+              0.0018577344631864644,
+              0.8568229660498616,
+              0.14131929948695196
+            ],
+            [
+              0.115408003245809,
+              0.10769574487851657,
+              0.7768962518756745
+            ]
+          ],
+          "initial_distribution": [
+            0.14288657312158143,
+            0.5345723229572987,
+            0.3225411039211198
+          ]
+        },
+        "GMM_HMM_K3_M2": {
+          "category": "primary",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 12915.9,
+          "val_mean_pred_ll_pol_a": 6.09241,
+          "val_total_pred_ll_pol_b": 12915.48,
+          "val_mean_pred_ll_pol_b": 6.09221,
+          "test_total_pred_ll_pol_a": 11478.62,
+          "test_mean_pred_ll_pol_a": 6.083,
+          "test_total_pred_ll_pol_b": 11478.2,
+          "test_mean_pred_ll_pol_b": 6.08278,
+          "policy_a_vs_b_delta_test_nats": 0.42,
+          "test_switch_frequency": 0.2031,
+          "test_mean_entropy": 0.3081,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.41,
+            "max_cost": 0.6299,
+            "global_gap": 3.3398,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 1,
+              "1": 0,
+              "2": 2
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.00018175474316719698,
+              "aligned_med_vol": 0.0003696737423046321,
+              "aligned_high_vol": 0.0009018702731433867
+            }
+          },
+          "transition_matrix": [
+            [
+              0.8302831147826791,
+              1.6100726065686844e-06,
+              0.16971527514471413
+            ],
+            [
+              0.000755408710970555,
+              0.8815335682254344,
+              0.11771102306359513
+            ],
+            [
+              0.09524213866384033,
+              0.08658919446286924,
+              0.8181686668732905
+            ]
+          ],
+          "initial_distribution": [
+            0.17590482438007513,
+            0.5171711866369895,
+            0.3069239889829353
+          ]
+        },
+        "GMM_HMM_K3_M3_cov1e-3": {
+          "category": "primary_and_anchor",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 13199.97,
+          "val_mean_pred_ll_pol_a": 6.2264,
+          "val_total_pred_ll_pol_b": 13199.53,
+          "val_mean_pred_ll_pol_b": 6.22619,
+          "test_total_pred_ll_pol_a": 11744.65,
+          "test_mean_pred_ll_pol_a": 6.22398,
+          "test_total_pred_ll_pol_b": 11744.21,
+          "test_mean_pred_ll_pol_b": 6.22375,
+          "policy_a_vs_b_delta_test_nats": 0.44,
+          "test_switch_frequency": 0.1909,
+          "test_mean_entropy": 0.3146,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.2248,
+            "max_cost": 0.4235,
+            "global_gap": 3.2362,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 2,
+              "1": 0,
+              "2": 1
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.0001739509956493915,
+              "aligned_med_vol": 0.00036592568843901317,
+              "aligned_high_vol": 0.0008350482756321133
+            }
+          },
+          "transition_matrix": [
+            [
+              0.823532822250403,
+              0.09234911565338819,
+              0.08411806209620891
+            ],
+            [
+              0.13330453920166532,
+              0.8657849364787293,
+              0.000910524319605363
+            ],
+            [
+              0.11819774856390185,
+              1.4667132171200911e-06,
+              0.881800784722881
+            ]
+          ],
+          "initial_distribution": [
+            0.30588719411599236,
+            0.489723690258125,
+            0.2043891156258826
+          ]
+        },
+        "GMM_HMM_K3_M3_cov1e-4": {
+          "category": "cov_reg_sensitivity",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 13104.1,
+          "val_mean_pred_ll_pol_a": 6.18118,
+          "val_total_pred_ll_pol_b": 13103.65,
+          "val_mean_pred_ll_pol_b": 6.18097,
+          "test_total_pred_ll_pol_a": 11657.1,
+          "test_mean_pred_ll_pol_a": 6.17758,
+          "test_total_pred_ll_pol_b": 11656.65,
+          "test_mean_pred_ll_pol_b": 6.17735,
+          "policy_a_vs_b_delta_test_nats": 0.449,
+          "test_switch_frequency": 0.1999,
+          "test_mean_entropy": 0.3309,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.3259,
+            "max_cost": 0.6286,
+            "global_gap": 3.1069,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 2,
+              "1": 0,
+              "2": 1
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.00017612244551218993,
+              "aligned_med_vol": 0.00034755251421600446,
+              "aligned_high_vol": 0.0008224506645446875
+            }
+          },
+          "transition_matrix": [
+            [
+              0.8126396937218191,
+              0.09381452410611023,
+              0.09354578217207069
+            ],
+            [
+              0.12927150158348535,
+              0.8690413942543759,
+              0.0016871041621386057
+            ],
+            [
+              0.11935196644847346,
+              1.6739638929732117e-06,
+              0.8806463595876336
+            ]
+          ],
+          "initial_distribution": [
+            0.2938894132157664,
+            0.48931633242994543,
+            0.21679425435428826
+          ]
+        },
+        "GMM_HMM_K3_M3_cov1e-2": {
+          "category": "cov_reg_sensitivity",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 13219.13,
+          "val_mean_pred_ll_pol_a": 6.23544,
+          "val_total_pred_ll_pol_b": 13218.68,
+          "val_mean_pred_ll_pol_b": 6.23522,
+          "test_total_pred_ll_pol_a": 11742.02,
+          "test_mean_pred_ll_pol_a": 6.22259,
+          "test_total_pred_ll_pol_b": 11741.57,
+          "test_mean_pred_ll_pol_b": 6.22235,
+          "policy_a_vs_b_delta_test_nats": 0.454,
+          "test_switch_frequency": 0.1856,
+          "test_mean_entropy": 0.3122,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.2409,
+            "max_cost": 0.3145,
+            "global_gap": 3.3784,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 0,
+              "1": 1,
+              "2": 2
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.00018210392324458248,
+              "aligned_med_vol": 0.0003870200393048485,
+              "aligned_high_vol": 0.0008705678316736689
+            }
+          },
+          "transition_matrix": [
+            [
+              0.8901902982606285,
+              1.7871774109039767e-05,
+              0.10979182996526239
+            ],
+            [
+              1.34904173108646e-06,
+              0.8815953575969088,
+              0.11840329336136012
+            ],
+            [
+              0.07156911837965628,
+              0.06908063991473154,
+              0.8593502417056121
+            ]
+          ],
+          "initial_distribution": [
+            0.5074601849642281,
+            0.1760400397972273,
+            0.31649977523854467
+          ]
+        },
+        "GMM_HMM_K3_M3_diurnal": {
+          "category": "diurnal_sensitivity",
+          "features": [
+            "r_oc",
+            "range_zscore"
+          ],
+          "val_total_pred_ll_pol_a": 11366.2,
+          "val_mean_pred_ll_pol_a": 5.36141,
+          "val_total_pred_ll_pol_b": 11366.13,
+          "val_mean_pred_ll_pol_b": 5.36138,
+          "test_total_pred_ll_pol_a": 10035.82,
+          "test_mean_pred_ll_pol_a": 5.3184,
+          "test_total_pred_ll_pol_b": 10035.74,
+          "test_mean_pred_ll_pol_b": 5.31836,
+          "policy_a_vs_b_delta_test_nats": 0.075,
+          "test_switch_frequency": 0.1007,
+          "test_mean_entropy": 0.2915,
+          "alignment": {
+            "match_rate": 0.0,
+            "avg_cost": 0.0,
+            "max_cost": 0.0,
+            "global_gap": 0.4914,
+            "is_ambiguous": false,
+            "matched_mapping": {},
+            "volatility_monotonic": false,
+            "sigma_returns": {
+              "aligned_low_vol": null,
+              "aligned_med_vol": null,
+              "aligned_high_vol": null
+            }
+          },
+          "transition_matrix": [
+            [
+              0.9360810842399182,
+              0.05753443357061093,
+              0.00638448218947098
+            ],
+            [
+              0.08488600524793424,
+              0.8888379129121482,
+              0.026276081839917635
+            ],
+            [
+              1.4504068124189389e-05,
+              0.35803340758971564,
+              0.6419520883421602
+            ]
+          ],
+          "initial_distribution": [
+            0.8012684274541627,
+            0.163765334488604,
+            0.034966238057233395
+          ]
+        }
+      },
+      "pairwise_comparisons": {
+        "lag_4": {
+          "M3_vs_M1": {
+            "mean_loss_diff_nats": 0.257658,
+            "hac_variance": 0.303925,
+            "dm_statistic_hln": 20.297,
+            "raw_p_value": 1.3678444239652018e-91,
+            "holm_adjusted_p_value": 4.103533271895605e-91,
+            "is_significant_adj_05": true
+          },
+          "M2_vs_M1": {
+            "mean_loss_diff_nats": 0.11668,
+            "hac_variance": 0.209908,
+            "dm_statistic_hln": 11.0599,
+            "raw_p_value": 1.9629315147899764e-28,
+            "holm_adjusted_p_value": 1.9629315147899764e-28,
+            "is_significant_adj_05": true
+          },
+          "M3_vs_M2": {
+            "mean_loss_diff_nats": 0.140978,
+            "hac_variance": 0.209262,
+            "dm_statistic_hln": 13.3837,
+            "raw_p_value": 7.52765931181783e-41,
+            "holm_adjusted_p_value": 1.505531862363566e-40,
+            "is_significant_adj_05": true
+          }
+        },
+        "lag_8": {
+          "M3_vs_M1": {
+            "mean_loss_diff_nats": 0.257658,
+            "hac_variance": 0.304156,
+            "dm_statistic_hln": 20.2893,
+            "raw_p_value": 1.59948479845637e-91,
+            "holm_adjusted_p_value": 4.7984543953691104e-91,
+            "is_significant_adj_05": true
+          },
+          "M2_vs_M1": {
+            "mean_loss_diff_nats": 0.11668,
+            "hac_variance": 0.212416,
+            "dm_statistic_hln": 10.9944,
+            "raw_p_value": 4.065391313534949e-28,
+            "holm_adjusted_p_value": 4.065391313534949e-28,
+            "is_significant_adj_05": true
+          },
+          "M3_vs_M2": {
+            "mean_loss_diff_nats": 0.140978,
+            "hac_variance": 0.215783,
+            "dm_statistic_hln": 13.18,
+            "raw_p_value": 1.1446206178165537e-39,
+            "holm_adjusted_p_value": 2.2892412356331073e-39,
+            "is_significant_adj_05": true
+          }
+        },
+        "lag_16": {
+          "M3_vs_M1": {
+            "mean_loss_diff_nats": 0.257658,
+            "hac_variance": 0.302056,
+            "dm_statistic_hln": 20.3597,
+            "raw_p_value": 3.811523112199214e-92,
+            "holm_adjusted_p_value": 1.1434569336597641e-91,
+            "is_significant_adj_05": true
+          },
+          "M2_vs_M1": {
+            "mean_loss_diff_nats": 0.11668,
+            "hac_variance": 0.22252,
+            "dm_statistic_hln": 10.7419,
+            "raw_p_value": 6.468725533341482e-27,
+            "holm_adjusted_p_value": 6.468725533341482e-27,
+            "is_significant_adj_05": true
+          },
+          "M3_vs_M2": {
+            "mean_loss_diff_nats": 0.140978,
+            "hac_variance": 0.222033,
+            "dm_statistic_hln": 12.9931,
+            "raw_p_value": 1.3381879814961894e-38,
+            "holm_adjusted_p_value": 2.676375962992379e-38,
+            "is_significant_adj_05": true
+          }
+        }
+      }
+    },
+    "3": {
+      "fold_id": 3,
+      "train_start": "2023-01-01T23:30:00+00:00",
+      "train_end": "2023-08-31T23:30:00+00:00",
+      "train_bars": 13006,
+      "val_start": "2023-09-01T00:00:00+00:00",
+      "val_end": "2023-09-29T21:45:00+00:00",
+      "val_bars": 1887,
+      "test_start": "2023-10-01T22:00:00+00:00",
+      "test_end": "2023-10-31T23:45:00+00:00",
+      "test_bars": 2056,
+      "models": {
+        "Gaussian_HMM_K3_M1": {
+          "category": "primary",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 11276.46,
+          "val_mean_pred_ll_pol_a": 5.97587,
+          "val_total_pred_ll_pol_b": 11276.17,
+          "val_mean_pred_ll_pol_b": 5.97572,
+          "test_total_pred_ll_pol_a": 12267.79,
+          "test_mean_pred_ll_pol_a": 5.96683,
+          "test_total_pred_ll_pol_b": 12267.79,
+          "test_mean_pred_ll_pol_b": 5.96683,
+          "policy_a_vs_b_delta_test_nats": 0.0,
+          "test_switch_frequency": 0.237,
+          "test_mean_entropy": 0.2772,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.6407,
+            "max_cost": 0.9765,
+            "global_gap": 3.3901,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 1,
+              "1": 2,
+              "2": 0
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.0001667449167903672,
+              "aligned_med_vol": 0.00036159227948705393,
+              "aligned_high_vol": 0.0009689946396188719
+            }
+          },
+          "transition_matrix": [
+            [
+              0.7247201845070514,
+              0.27527787437459866,
+              1.9411183499728973e-06
+            ],
+            [
+              0.11343786039412386,
+              0.7731234813355624,
+              0.11343865827031369
+            ],
+            [
+              0.0026433826695355486,
+              0.15011248801975513,
+              0.8472441293107094
+            ]
+          ],
+          "initial_distribution": [
+            0.14731980982703052,
+            0.29933178479275124,
+            0.5533484053802183
+          ]
+        },
+        "GMM_HMM_K3_M2": {
+          "category": "primary",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 11494.64,
+          "val_mean_pred_ll_pol_a": 6.09149,
+          "val_total_pred_ll_pol_b": 11494.27,
+          "val_mean_pred_ll_pol_b": 6.09129,
+          "test_total_pred_ll_pol_a": 12511.16,
+          "test_mean_pred_ll_pol_a": 6.0852,
+          "test_total_pred_ll_pol_b": 12511.16,
+          "test_mean_pred_ll_pol_b": 6.0852,
+          "policy_a_vs_b_delta_test_nats": 0.0,
+          "test_switch_frequency": 0.1825,
+          "test_mean_entropy": 0.3037,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.39,
+            "max_cost": 0.5936,
+            "global_gap": 3.43,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 0,
+              "1": 1,
+              "2": 2
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.00017883988130867122,
+              "aligned_med_vol": 0.0003548414214936645,
+              "aligned_high_vol": 0.0008717389883886913
+            }
+          },
+          "transition_matrix": [
+            [
+              0.8804273172435098,
+              0.0007002829433467703,
+              0.11887239981314349
+            ],
+            [
+              1.5725288231900166e-06,
+              0.840360012795346,
+              0.15963841467583073
+            ],
+            [
+              0.08423635229379377,
+              0.09284743642380755,
+              0.8229162112823988
+            ]
+          ],
+          "initial_distribution": [
+            0.5406847532038455,
+            0.1830959042393464,
+            0.27621934255680813
+          ]
+        },
+        "GMM_HMM_K3_M3_cov1e-3": {
+          "category": "primary_and_anchor",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 11784.52,
+          "val_mean_pred_ll_pol_a": 6.24511,
+          "val_total_pred_ll_pol_b": 11784.12,
+          "val_mean_pred_ll_pol_b": 6.2449,
+          "test_total_pred_ll_pol_a": 12787.32,
+          "test_mean_pred_ll_pol_a": 6.21951,
+          "test_total_pred_ll_pol_b": 12787.32,
+          "test_mean_pred_ll_pol_b": 6.21951,
+          "policy_a_vs_b_delta_test_nats": 0.0,
+          "test_switch_frequency": 0.1562,
+          "test_mean_entropy": 0.2907,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.0554,
+            "max_cost": 0.0641,
+            "global_gap": 3.6734,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 2,
+              "1": 0,
+              "2": 1
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.00017571087429640492,
+              "aligned_med_vol": 0.0003934692384045542,
+              "aligned_high_vol": 0.00085549711922622
+            }
+          },
+          "transition_matrix": [
+            [
+              0.86250488895901,
+              0.07607183379842979,
+              0.061423277242560095
+            ],
+            [
+              0.12296805921545996,
+              0.8770290856582905,
+              2.8551262493974277e-06
+            ],
+            [
+              0.11705670704729323,
+              1.2700770079948006e-06,
+              0.8829420228756989
+            ]
+          ],
+          "initial_distribution": [
+            0.30829486289363883,
+            0.5251672798458143,
+            0.16653785726054696
+          ]
+        },
+        "GMM_HMM_K3_M3_cov1e-4": {
+          "category": "cov_reg_sensitivity",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 11789.33,
+          "val_mean_pred_ll_pol_a": 6.24766,
+          "val_total_pred_ll_pol_b": 11788.94,
+          "val_mean_pred_ll_pol_b": 6.24745,
+          "test_total_pred_ll_pol_a": 12789.34,
+          "test_mean_pred_ll_pol_a": 6.22049,
+          "test_total_pred_ll_pol_b": 12789.34,
+          "test_mean_pred_ll_pol_b": 6.22049,
+          "policy_a_vs_b_delta_test_nats": 0.0,
+          "test_switch_frequency": 0.1625,
+          "test_mean_entropy": 0.2937,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.0242,
+            "max_cost": 0.0339,
+            "global_gap": 3.7313,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 2,
+              "1": 0,
+              "2": 1
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.0001738288677283846,
+              "aligned_med_vol": 0.0003884047151115551,
+              "aligned_high_vol": 0.0008461330297442395
+            }
+          },
+          "transition_matrix": [
+            [
+              0.8562415470533044,
+              0.07954605354491986,
+              0.06421239940177588
+            ],
+            [
+              0.12865998833176887,
+              0.8713368159564305,
+              3.1957118005272303e-06
+            ],
+            [
+              0.11645897030492879,
+              1.2926373138867252e-06,
+              0.8835397370577573
+            ]
+          ],
+          "initial_distribution": [
+            0.3061653470154547,
+            0.5205740431843946,
+            0.17326060980015065
+          ]
+        },
+        "GMM_HMM_K3_M3_cov1e-2": {
+          "category": "cov_reg_sensitivity",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 11725.69,
+          "val_mean_pred_ll_pol_a": 6.21393,
+          "val_total_pred_ll_pol_b": 11725.29,
+          "val_mean_pred_ll_pol_b": 6.21372,
+          "test_total_pred_ll_pol_a": 12739.57,
+          "test_mean_pred_ll_pol_a": 6.19629,
+          "test_total_pred_ll_pol_b": 12739.57,
+          "test_mean_pred_ll_pol_b": 6.19629,
+          "policy_a_vs_b_delta_test_nats": 0.0,
+          "test_switch_frequency": 0.1299,
+          "test_mean_entropy": 0.2854,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.3804,
+            "max_cost": 0.4398,
+            "global_gap": 3.0665,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 2,
+              "1": 0,
+              "2": 1
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.00018803038514241552,
+              "aligned_med_vol": 0.0004242286821413534,
+              "aligned_high_vol": 0.0009106471972347473
+            }
+          },
+          "transition_matrix": [
+            [
+              0.8926968233394798,
+              0.05970839688561335,
+              0.04759477977490692
+            ],
+            [
+              0.09457936953443156,
+              0.9054187826406985,
+              1.847824869764942e-06
+            ],
+            [
+              0.1180023940453836,
+              1.2072170481289515e-06,
+              0.8819963987375683
+            ]
+          ],
+          "initial_distribution": [
+            0.3134443682110599,
+            0.5528786084131274,
+            0.13367702337581264
+          ]
+        },
+        "GMM_HMM_K3_M3_diurnal": {
+          "category": "diurnal_sensitivity",
+          "features": [
+            "r_oc",
+            "range_zscore"
+          ],
+          "val_total_pred_ll_pol_a": 10017.62,
+          "val_mean_pred_ll_pol_a": 5.30875,
+          "val_total_pred_ll_pol_b": 10017.52,
+          "val_mean_pred_ll_pol_b": 5.3087,
+          "test_total_pred_ll_pol_a": 10803.05,
+          "test_mean_pred_ll_pol_a": 5.2544,
+          "test_total_pred_ll_pol_b": 10803.05,
+          "test_mean_pred_ll_pol_b": 5.2544,
+          "policy_a_vs_b_delta_test_nats": 0.0,
+          "test_switch_frequency": 0.1221,
+          "test_mean_entropy": 0.3576,
+          "alignment": {
+            "match_rate": 0.0,
+            "avg_cost": 0.0,
+            "max_cost": 0.0,
+            "global_gap": 0.491,
+            "is_ambiguous": false,
+            "matched_mapping": {},
+            "volatility_monotonic": false,
+            "sigma_returns": {
+              "aligned_low_vol": null,
+              "aligned_med_vol": null,
+              "aligned_high_vol": null
+            }
+          },
+          "transition_matrix": [
+            [
+              0.8814301814276162,
+              0.09168879729962989,
+              0.026881021272753956
+            ],
+            [
+              0.05330283792930634,
+              0.9391956881174186,
+              0.00750147395327499
+            ],
+            [
+              0.35239733849247884,
+              0.0008967727907174896,
+              0.6467058887168037
+            ]
+          ],
+          "initial_distribution": [
+            0.17514917697864701,
+            0.7911342569506726,
+            0.03371656607068031
+          ]
+        }
+      },
+      "pairwise_comparisons": {
+        "lag_4": {
+          "M3_vs_M1": {
+            "mean_loss_diff_nats": 0.252687,
+            "hac_variance": 0.456892,
+            "dm_statistic_hln": 16.9465,
+            "raw_p_value": 2.04102672855698e-64,
+            "holm_adjusted_p_value": 6.123080185670941e-64,
+            "is_significant_adj_05": true
+          },
+          "M2_vs_M1": {
+            "mean_loss_diff_nats": 0.11837,
+            "hac_variance": 0.235748,
+            "dm_statistic_hln": 11.0516,
+            "raw_p_value": 2.1545534997951396e-28,
+            "holm_adjusted_p_value": 2.1545534997951396e-28,
+            "is_significant_adj_05": true
+          },
+          "M3_vs_M2": {
+            "mean_loss_diff_nats": 0.134317,
+            "hac_variance": 0.27798,
+            "dm_statistic_hln": 11.5486,
+            "raw_p_value": 7.50370505933519e-31,
+            "holm_adjusted_p_value": 1.500741011867038e-30,
+            "is_significant_adj_05": true
+          }
+        },
+        "lag_8": {
+          "M3_vs_M1": {
+            "mean_loss_diff_nats": 0.252687,
+            "hac_variance": 0.464252,
+            "dm_statistic_hln": 16.8117,
+            "raw_p_value": 2.0041421180891298e-63,
+            "holm_adjusted_p_value": 6.01242635426739e-63,
+            "is_significant_adj_05": true
+          },
+          "M2_vs_M1": {
+            "mean_loss_diff_nats": 0.11837,
+            "hac_variance": 0.242883,
+            "dm_statistic_hln": 10.888,
+            "raw_p_value": 1.3145704266421296e-27,
+            "holm_adjusted_p_value": 1.3145704266421296e-27,
+            "is_significant_adj_05": true
+          },
+          "M3_vs_M2": {
+            "mean_loss_diff_nats": 0.134317,
+            "hac_variance": 0.287006,
+            "dm_statistic_hln": 11.3656,
+            "raw_p_value": 6.2069912677960065e-30,
+            "holm_adjusted_p_value": 1.2413982535592013e-29,
+            "is_significant_adj_05": true
+          }
+        },
+        "lag_16": {
+          "M3_vs_M1": {
+            "mean_loss_diff_nats": 0.252687,
+            "hac_variance": 0.479853,
+            "dm_statistic_hln": 16.5361,
+            "raw_p_value": 2.015344355191537e-61,
+            "holm_adjusted_p_value": 6.046033065574611e-61,
+            "is_significant_adj_05": true
+          },
+          "M2_vs_M1": {
+            "mean_loss_diff_nats": 0.11837,
+            "hac_variance": 0.267076,
+            "dm_statistic_hln": 10.3832,
+            "raw_p_value": 2.957678414126933e-25,
+            "holm_adjusted_p_value": 2.957678414126933e-25,
+            "is_significant_adj_05": true
+          },
+          "M3_vs_M2": {
+            "mean_loss_diff_nats": 0.134317,
+            "hac_variance": 0.290101,
+            "dm_statistic_hln": 11.3048,
+            "raw_p_value": 1.2430701468408496e-29,
+            "holm_adjusted_p_value": 2.4861402936816993e-29,
+            "is_significant_adj_05": true
+          }
+        }
+      }
+    },
+    "4": {
+      "fold_id": 4,
+      "train_start": "2023-01-01T23:30:00+00:00",
+      "train_end": "2023-09-29T21:45:00+00:00",
+      "train_bars": 14893,
+      "val_start": "2023-10-01T22:00:00+00:00",
+      "val_end": "2023-10-31T23:45:00+00:00",
+      "val_bars": 2056,
+      "test_start": "2023-11-01T00:00:00+00:00",
+      "test_end": "2023-11-30T23:45:00+00:00",
+      "test_bars": 2027,
+      "models": {
+        "Gaussian_HMM_K3_M1": {
+          "category": "primary",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 12274.71,
+          "val_mean_pred_ll_pol_a": 5.97019,
+          "val_total_pred_ll_pol_b": 12274.71,
+          "val_mean_pred_ll_pol_b": 5.97019,
+          "test_total_pred_ll_pol_a": 12187.54,
+          "test_mean_pred_ll_pol_a": 6.0126,
+          "test_total_pred_ll_pol_b": 12187.51,
+          "test_mean_pred_ll_pol_b": 6.01259,
+          "policy_a_vs_b_delta_test_nats": 0.023,
+          "test_switch_frequency": 0.267,
+          "test_mean_entropy": 0.2813,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.5856,
+            "max_cost": 0.8368,
+            "global_gap": 3.3689,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 1,
+              "1": 0,
+              "2": 2
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.00016351819591388053,
+              "aligned_med_vol": 0.0003546421266245241,
+              "aligned_high_vol": 0.0009467442208109679
+            }
+          },
+          "transition_matrix": [
+            [
+              0.7334857629505469,
+              1.8766513226145266e-06,
+              0.2665123603981305
+            ],
+            [
+              0.00384817056947806,
+              0.8409908290127961,
+              0.1551610004177258
+            ],
+            [
+              0.10932345847166816,
+              0.11404446443744959,
+              0.7766320770908822
+            ]
+          ],
+          "initial_distribution": [
+            0.14657934102981945,
+            0.57212951492504,
+            0.2812911440451406
+          ]
+        },
+        "GMM_HMM_K3_M2": {
+          "category": "primary",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 12510.4,
+          "val_mean_pred_ll_pol_a": 6.08483,
+          "val_total_pred_ll_pol_b": 12510.4,
+          "val_mean_pred_ll_pol_b": 6.08483,
+          "test_total_pred_ll_pol_a": 12443.53,
+          "test_mean_pred_ll_pol_a": 6.13889,
+          "test_total_pred_ll_pol_b": 12443.35,
+          "test_mean_pred_ll_pol_b": 6.1388,
+          "policy_a_vs_b_delta_test_nats": 0.176,
+          "test_switch_frequency": 0.192,
+          "test_mean_entropy": 0.3134,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.3247,
+            "max_cost": 0.5129,
+            "global_gap": 3.3791,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 1,
+              "1": 0,
+              "2": 2
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.00017495590700383282,
+              "aligned_med_vol": 0.0003505484951889247,
+              "aligned_high_vol": 0.0008432580889640058
+            }
+          },
+          "transition_matrix": [
+            [
+              0.8583486643052038,
+              1.5513593697901005e-06,
+              0.1416497843354264
+            ],
+            [
+              0.00189009452960438,
+              0.8750436229746177,
+              0.12306628249577797
+            ],
+            [
+              0.08383960397217817,
+              0.08489616634713355,
+              0.8312642296806884
+            ]
+          ],
+          "initial_distribution": [
+            0.18406875461482072,
+            0.5593564715066766,
+            0.2565747738785027
+          ]
+        },
+        "GMM_HMM_K3_M3_cov1e-3": {
+          "category": "primary_and_anchor",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 12712.6,
+          "val_mean_pred_ll_pol_a": 6.18317,
+          "val_total_pred_ll_pol_b": 12712.6,
+          "val_mean_pred_ll_pol_b": 6.18317,
+          "test_total_pred_ll_pol_a": 12628.37,
+          "test_mean_pred_ll_pol_a": 6.23008,
+          "test_total_pred_ll_pol_b": 12628.09,
+          "test_mean_pred_ll_pol_b": 6.22994,
+          "policy_a_vs_b_delta_test_nats": 0.278,
+          "test_switch_frequency": 0.1811,
+          "test_mean_entropy": 0.3325,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.3931,
+            "max_cost": 0.5665,
+            "global_gap": 3.2397,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 2,
+              "1": 0,
+              "2": 1
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.00017610907352514374,
+              "aligned_med_vol": 0.00032963318423695584,
+              "aligned_high_vol": 0.0007883739673644692
+            }
+          },
+          "transition_matrix": [
+            [
+              0.8342443359629107,
+              0.08098546265926258,
+              0.08477020137782681
+            ],
+            [
+              0.12026987185360163,
+              0.8763859862550083,
+              0.0033441418913900327
+            ],
+            [
+              0.11350179521457279,
+              1.7642494646761765e-06,
+              0.8864964405359627
+            ]
+          ],
+          "initial_distribution": [
+            0.24374122840382073,
+            0.5427122263776043,
+            0.213546545218575
+          ]
+        },
+        "GMM_HMM_K3_M3_cov1e-4": {
+          "category": "cov_reg_sensitivity",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 12713.48,
+          "val_mean_pred_ll_pol_a": 6.1836,
+          "val_total_pred_ll_pol_b": 12713.48,
+          "val_mean_pred_ll_pol_b": 6.1836,
+          "test_total_pred_ll_pol_a": 12627.68,
+          "test_mean_pred_ll_pol_a": 6.22974,
+          "test_total_pred_ll_pol_b": 12627.41,
+          "test_mean_pred_ll_pol_b": 6.2296,
+          "policy_a_vs_b_delta_test_nats": 0.274,
+          "test_switch_frequency": 0.1831,
+          "test_mean_entropy": 0.3304,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.396,
+            "max_cost": 0.5972,
+            "global_gap": 3.2389,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 2,
+              "1": 0,
+              "2": 1
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.0001751788067091905,
+              "aligned_med_vol": 0.0003285266131825157,
+              "aligned_high_vol": 0.0007877286902504797
+            }
+          },
+          "transition_matrix": [
+            [
+              0.8309611376557415,
+              0.08308743438318968,
+              0.08595142796106879
+            ],
+            [
+              0.12301751845528756,
+              0.8732553226244144,
+              0.003727158920298008
+            ],
+            [
+              0.11519687689505947,
+              1.8248213224079238e-06,
+              0.8848012982836182
+            ]
+          ],
+          "initial_distribution": [
+            0.24500519196040296,
+            0.5408437826465069,
+            0.21415102539309014
+          ]
+        },
+        "GMM_HMM_K3_M3_cov1e-2": {
+          "category": "cov_reg_sensitivity",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 12778.28,
+          "val_mean_pred_ll_pol_a": 6.21512,
+          "val_total_pred_ll_pol_b": 12778.28,
+          "val_mean_pred_ll_pol_b": 6.21512,
+          "test_total_pred_ll_pol_a": 12721.12,
+          "test_mean_pred_ll_pol_a": 6.27583,
+          "test_total_pred_ll_pol_b": 12720.86,
+          "test_mean_pred_ll_pol_b": 6.27571,
+          "policy_a_vs_b_delta_test_nats": 0.259,
+          "test_switch_frequency": 0.1535,
+          "test_mean_entropy": 0.3073,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.2465,
+            "max_cost": 0.325,
+            "global_gap": 3.3494,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 1,
+              "1": 2,
+              "2": 0
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.00018185570225976046,
+              "aligned_med_vol": 0.000389458752126229,
+              "aligned_high_vol": 0.0008514453509219557
+            }
+          },
+          "transition_matrix": [
+            [
+              0.8890963860153447,
+              0.11090235816728093,
+              1.2558173744925287e-06
+            ],
+            [
+              0.05521574939470418,
+              0.8820701714568685,
+              0.06271407914842742
+            ],
+            [
+              0.0004922477952331422,
+              0.10267401620456593,
+              0.8968337360002009
+            ]
+          ],
+          "initial_distribution": [
+            0.159148811855586,
+            0.27822042546285003,
+            0.562630762681564
+          ]
+        },
+        "GMM_HMM_K3_M3_diurnal": {
+          "category": "diurnal_sensitivity",
+          "features": [
+            "r_oc",
+            "range_zscore"
+          ],
+          "val_total_pred_ll_pol_a": 10806.02,
+          "val_mean_pred_ll_pol_a": 5.25585,
+          "val_total_pred_ll_pol_b": 10806.02,
+          "val_mean_pred_ll_pol_b": 5.25585,
+          "test_total_pred_ll_pol_a": 10819.83,
+          "test_mean_pred_ll_pol_a": 5.33785,
+          "test_total_pred_ll_pol_b": 10820.0,
+          "test_mean_pred_ll_pol_b": 5.33794,
+          "policy_a_vs_b_delta_test_nats": -0.165,
+          "test_switch_frequency": 0.1194,
+          "test_mean_entropy": 0.3332,
+          "alignment": {
+            "match_rate": 0.0,
+            "avg_cost": 0.0,
+            "max_cost": 0.0,
+            "global_gap": 0.4911,
+            "is_ambiguous": false,
+            "matched_mapping": {},
+            "volatility_monotonic": false,
+            "sigma_returns": {
+              "aligned_low_vol": null,
+              "aligned_med_vol": null,
+              "aligned_high_vol": null
+            }
+          },
+          "transition_matrix": [
+            [
+              0.9355596390995597,
+              0.05714422626296851,
+              0.007296134637471863
+            ],
+            [
+              0.09390204564204814,
+              0.8829141864263299,
+              0.023183767931622055
+            ],
+            [
+              0.00012500486109030722,
+              0.3342726718283181,
+              0.6656023233105915
+            ]
+          ],
+          "initial_distribution": [
+            0.7690365565812809,
+            0.19874451278687627,
+            0.03221893063184281
+          ]
+        }
+      },
+      "pairwise_comparisons": {
+        "lag_4": {
+          "M3_vs_M1": {
+            "mean_loss_diff_nats": 0.217478,
+            "hac_variance": 0.639157,
+            "dm_statistic_hln": 12.2442,
+            "raw_p_value": 1.8034990311910971e-34,
+            "holm_adjusted_p_value": 5.410497093573292e-34,
+            "is_significant_adj_05": true
+          },
+          "M2_vs_M1": {
+            "mean_loss_diff_nats": 0.126289,
+            "hac_variance": 0.356702,
+            "dm_statistic_hln": 9.5177,
+            "raw_p_value": 1.7697231622317334e-21,
+            "holm_adjusted_p_value": 1.9023526531737565e-21,
+            "is_significant_adj_05": true
+          },
+          "M3_vs_M2": {
+            "mean_loss_diff_nats": 0.091189,
+            "hac_variance": 0.183487,
+            "dm_statistic_hln": 9.5821,
+            "raw_p_value": 9.511763265868782e-22,
+            "holm_adjusted_p_value": 1.9023526531737565e-21,
+            "is_significant_adj_05": true
+          }
+        },
+        "lag_8": {
+          "M3_vs_M1": {
+            "mean_loss_diff_nats": 0.217478,
+            "hac_variance": 0.615453,
+            "dm_statistic_hln": 12.4778,
+            "raw_p_value": 9.866043906094108e-36,
+            "holm_adjusted_p_value": 2.959813171828232e-35,
+            "is_significant_adj_05": true
+          },
+          "M2_vs_M1": {
+            "mean_loss_diff_nats": 0.126289,
+            "hac_variance": 0.361453,
+            "dm_statistic_hln": 9.455,
+            "raw_p_value": 3.2307139271976756e-21,
+            "holm_adjusted_p_value": 3.2307139271976756e-21,
+            "is_significant_adj_05": true
+          },
+          "M3_vs_M2": {
+            "mean_loss_diff_nats": 0.091189,
+            "hac_variance": 0.182409,
+            "dm_statistic_hln": 9.6103,
+            "raw_p_value": 7.231852333750315e-22,
+            "holm_adjusted_p_value": 1.446370466750063e-21,
+            "is_significant_adj_05": true
+          }
+        },
+        "lag_16": {
+          "M3_vs_M1": {
+            "mean_loss_diff_nats": 0.217478,
+            "hac_variance": 0.591726,
+            "dm_statistic_hln": 12.7255,
+            "raw_p_value": 4.26643457979189e-37,
+            "holm_adjusted_p_value": 1.279930373937567e-36,
+            "is_significant_adj_05": true
+          },
+          "M2_vs_M1": {
+            "mean_loss_diff_nats": 0.126289,
+            "hac_variance": 0.369475,
+            "dm_statistic_hln": 9.3518,
+            "raw_p_value": 8.617974455122329e-21,
+            "holm_adjusted_p_value": 8.617974455122329e-21,
+            "is_significant_adj_05": true
+          },
+          "M3_vs_M2": {
+            "mean_loss_diff_nats": 0.091189,
+            "hac_variance": 0.176291,
+            "dm_statistic_hln": 9.7757,
+            "raw_p_value": 1.4319097642164903e-22,
+            "holm_adjusted_p_value": 2.8638195284329806e-22,
+            "is_significant_adj_05": true
+          }
+        }
+      }
+    },
+    "5": {
+      "fold_id": 5,
+      "train_start": "2023-01-01T23:30:00+00:00",
+      "train_end": "2023-10-31T23:45:00+00:00",
+      "train_bars": 16949,
+      "val_start": "2023-11-01T00:00:00+00:00",
+      "val_end": "2023-11-30T23:45:00+00:00",
+      "val_bars": 2027,
+      "test_start": "2023-12-01T00:00:00+00:00",
+      "test_end": "2023-12-29T21:30:00+00:00",
+      "test_bars": 1860,
+      "models": {
+        "Gaussian_HMM_K3_M1": {
+          "category": "primary",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 12193.4,
+          "val_mean_pred_ll_pol_a": 6.01549,
+          "val_total_pred_ll_pol_b": 12193.4,
+          "val_mean_pred_ll_pol_b": 6.01549,
+          "test_total_pred_ll_pol_a": 10973.13,
+          "test_mean_pred_ll_pol_a": 5.89953,
+          "test_total_pred_ll_pol_b": 10973.67,
+          "test_mean_pred_ll_pol_b": 5.89982,
+          "policy_a_vs_b_delta_test_nats": -0.534,
+          "test_switch_frequency": 0.263,
+          "test_mean_entropy": 0.2916,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.5637,
+            "max_cost": 0.8018,
+            "global_gap": 3.4315,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 2,
+              "1": 1,
+              "2": 0
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.00016111657432609164,
+              "aligned_med_vol": 0.00035265693951582144,
+              "aligned_high_vol": 0.0009452433363584876
+            }
+          },
+          "transition_matrix": [
+            [
+              0.7835139729743476,
+              0.1095565416705388,
+              0.10692948535511358
+            ],
+            [
+              0.27036221881113903,
+              0.7296359764453707,
+              1.8047434902782476e-06
+            ],
+            [
+              0.1482974553085672,
+              0.0035353847214123933,
+              0.8481671599700206
+            ]
+          ],
+          "initial_distribution": [
+            0.27454657350502737,
+            0.1386545144884497,
+            0.5867989120065228
+          ]
+        },
+        "GMM_HMM_K3_M2": {
+          "category": "primary",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 12444.35,
+          "val_mean_pred_ll_pol_a": 6.13929,
+          "val_total_pred_ll_pol_b": 12444.13,
+          "val_mean_pred_ll_pol_b": 6.13919,
+          "test_total_pred_ll_pol_a": 11202.94,
+          "test_mean_pred_ll_pol_a": 6.02309,
+          "test_total_pred_ll_pol_b": 11203.0,
+          "test_mean_pred_ll_pol_b": 6.02312,
+          "policy_a_vs_b_delta_test_nats": -0.059,
+          "test_switch_frequency": 0.2001,
+          "test_mean_entropy": 0.3233,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.3507,
+            "max_cost": 0.4922,
+            "global_gap": 3.4111,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 0,
+              "1": 2,
+              "2": 1
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.00017589381606408465,
+              "aligned_med_vol": 0.00035368185098006425,
+              "aligned_high_vol": 0.0008543347698014793
+            }
+          },
+          "transition_matrix": [
+            [
+              0.8869321513686057,
+              0.11144714211084035,
+              0.0016207065205538949
+            ],
+            [
+              0.07865818444642109,
+              0.8349704211526777,
+              0.08637139440090129
+            ],
+            [
+              1.558565334266831e-06,
+              0.15468140423295926,
+              0.8453170372017066
+            ]
+          ],
+          "initial_distribution": [
+            0.58355146576682,
+            0.2472184790489649,
+            0.16923005518421516
+          ]
+        },
+        "GMM_HMM_K3_M3_cov1e-3": {
+          "category": "primary_and_anchor",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 12544.15,
+          "val_mean_pred_ll_pol_a": 6.18853,
+          "val_total_pred_ll_pol_b": 12543.89,
+          "val_mean_pred_ll_pol_b": 6.1884,
+          "test_total_pred_ll_pol_a": 11334.95,
+          "test_mean_pred_ll_pol_a": 6.09406,
+          "test_total_pred_ll_pol_b": 11335.13,
+          "test_mean_pred_ll_pol_b": 6.09416,
+          "policy_a_vs_b_delta_test_nats": -0.176,
+          "test_switch_frequency": 0.1877,
+          "test_mean_entropy": 0.3473,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.5679,
+            "max_cost": 0.7192,
+            "global_gap": 3.1217,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 2,
+              "1": 1,
+              "2": 0
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.00017443557100396332,
+              "aligned_med_vol": 0.0003294689908223673,
+              "aligned_high_vol": 0.00078945277260301
+            }
+          },
+          "transition_matrix": [
+            [
+              0.8352213691508266,
+              0.08746515746509893,
+              0.07731347338407452
+            ],
+            [
+              0.1177826830130326,
+              0.8822156314809289,
+              1.685506038624156e-06
+            ],
+            [
+              0.11368631881584491,
+              0.0028788232273771613,
+              0.883434857956778
+            ]
+          ],
+          "initial_distribution": [
+            0.23778214351341853,
+            0.2026102340232667,
+            0.5596076224633149
+          ]
+        },
+        "GMM_HMM_K3_M3_cov1e-4": {
+          "category": "cov_reg_sensitivity",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 12544.03,
+          "val_mean_pred_ll_pol_a": 6.18847,
+          "val_total_pred_ll_pol_b": 12543.77,
+          "val_mean_pred_ll_pol_b": 6.18834,
+          "test_total_pred_ll_pol_a": 11330.76,
+          "test_mean_pred_ll_pol_a": 6.0918,
+          "test_total_pred_ll_pol_b": 11330.97,
+          "test_mean_pred_ll_pol_b": 6.09192,
+          "policy_a_vs_b_delta_test_nats": -0.22,
+          "test_switch_frequency": 0.191,
+          "test_mean_entropy": 0.3455,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.5646,
+            "max_cost": 0.7189,
+            "global_gap": 3.1316,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 2,
+              "1": 1,
+              "2": 0
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.00017328495745859505,
+              "aligned_med_vol": 0.00032821143637525447,
+              "aligned_high_vol": 0.0007884073622215189
+            }
+          },
+          "transition_matrix": [
+            [
+              0.8321166099657754,
+              0.08854978070859673,
+              0.07933360932562798
+            ],
+            [
+              0.11913614586890141,
+              0.8808621427266551,
+              1.7114044436734754e-06
+            ],
+            [
+              0.11669372649125614,
+              0.0031859576736530614,
+              0.8801203158350909
+            ]
+          ],
+          "initial_distribution": [
+            0.23925332546524838,
+            0.20339521774235594,
+            0.5573514567923957
+          ]
+        },
+        "GMM_HMM_K3_M3_cov1e-2": {
+          "category": "cov_reg_sensitivity",
+          "features": [
+            "r_oc",
+            "log_vol"
+          ],
+          "val_total_pred_ll_pol_a": 12663.85,
+          "val_mean_pred_ll_pol_a": 6.24758,
+          "val_total_pred_ll_pol_b": 12663.61,
+          "val_mean_pred_ll_pol_b": 6.24746,
+          "test_total_pred_ll_pol_a": 11481.84,
+          "test_mean_pred_ll_pol_a": 6.17303,
+          "test_total_pred_ll_pol_b": 11481.79,
+          "test_mean_pred_ll_pol_b": 6.17301,
+          "policy_a_vs_b_delta_test_nats": 0.043,
+          "test_switch_frequency": 0.1458,
+          "test_mean_entropy": 0.3056,
+          "alignment": {
+            "match_rate": 1.0,
+            "avg_cost": 0.3951,
+            "max_cost": 0.5263,
+            "global_gap": 3.2121,
+            "is_ambiguous": false,
+            "matched_mapping": {
+              "0": 2,
+              "1": 1,
+              "2": 0
+            },
+            "volatility_monotonic": true,
+            "sigma_returns": {
+              "aligned_low_vol": 0.0001792615097302508,
+              "aligned_med_vol": 0.00039352822768660295,
+              "aligned_high_vol": 0.0008474045759063627
+            }
+          },
+          "transition_matrix": [
+            [
+              0.8855162339033749,
+              0.05380258119678881,
+              0.06068118489983632
+            ],
+            [
+              0.11025167815193836,
+              0.8897470472808532,
+              1.27456720859309e-06
+            ],
+            [
+              0.0991527501802195,
+              0.0003379624840728005,
+              0.9005092873357078
+            ]
+          ],
+          "initial_distribution": [
+            0.2659552229716281,
+            0.15461284404731962,
+            0.5794319329810523
+          ]
+        },
+        "GMM_HMM_K3_M3_diurnal": {
+          "category": "diurnal_sensitivity",
+          "features": [
+            "r_oc",
+            "range_zscore"
+          ],
+          "val_total_pred_ll_pol_a": 10826.07,
+          "val_mean_pred_ll_pol_a": 5.34093,
+          "val_total_pred_ll_pol_b": 10826.32,
+          "val_mean_pred_ll_pol_b": 5.34106,
+          "test_total_pred_ll_pol_a": 9699.61,
+          "test_mean_pred_ll_pol_a": 5.21484,
+          "test_total_pred_ll_pol_b": 9699.13,
+          "test_mean_pred_ll_pol_b": 5.21459,
+          "policy_a_vs_b_delta_test_nats": 0.476,
+          "test_switch_frequency": 0.1469,
+          "test_mean_entropy": 0.3634,
+          "alignment": {
+            "match_rate": 0.0,
+            "avg_cost": 0.0,
+            "max_cost": 0.0,
+            "global_gap": 0.4715,
+            "is_ambiguous": false,
+            "matched_mapping": {},
+            "volatility_monotonic": false,
+            "sigma_returns": {
+              "aligned_low_vol": null,
+              "aligned_med_vol": null,
+              "aligned_high_vol": null
+            }
+          },
+          "transition_matrix": [
+            [
+              0.8852967964026085,
+              0.02116394541558156,
+              0.09353925818180994
+            ],
+            [
+              0.32388520495980977,
+              0.6737601243068679,
+              0.0023546707333224285
+            ],
+            [
+              0.058085543122611306,
+              0.00839167762929498,
+              0.9335227792480937
+            ]
+          ],
+          "initial_distribution": [
+            0.20225535486356105,
+            0.03700857268441496,
+            0.7607360724520239
+          ]
+        }
+      },
+      "pairwise_comparisons": {
+        "lag_4": {
+          "M3_vs_M1": {
+            "mean_loss_diff_nats": 0.194528,
+            "hac_variance": 0.558018,
+            "dm_statistic_hln": 11.2279,
+            "raw_p_value": 2.9752432038773974e-29,
+            "holm_adjusted_p_value": 8.925729611632192e-29,
+            "is_significant_adj_05": true
+          },
+          "M2_vs_M1": {
+            "mean_loss_diff_nats": 0.123555,
+            "hac_variance": 0.443811,
+            "dm_statistic_hln": 7.9965,
+            "raw_p_value": 1.2798148002935986e-15,
+            "holm_adjusted_p_value": 2.559629600587197e-15,
+            "is_significant_adj_05": true
+          },
+          "M3_vs_M2": {
+            "mean_loss_diff_nats": 0.070973,
+            "hac_variance": 1.02386,
+            "dm_statistic_hln": 3.0242,
+            "raw_p_value": 0.0024927822688264193,
+            "holm_adjusted_p_value": 0.0024927822688264193,
+            "is_significant_adj_05": true
+          }
+        },
+        "lag_8": {
+          "M3_vs_M1": {
+            "mean_loss_diff_nats": 0.194528,
+            "hac_variance": 0.546408,
+            "dm_statistic_hln": 11.3465,
+            "raw_p_value": 7.715574248652833e-30,
+            "holm_adjusted_p_value": 2.31467227459585e-29,
+            "is_significant_adj_05": true
+          },
+          "M2_vs_M1": {
+            "mean_loss_diff_nats": 0.123555,
+            "hac_variance": 0.440258,
+            "dm_statistic_hln": 8.0287,
+            "raw_p_value": 9.84907385177102e-16,
+            "holm_adjusted_p_value": 1.969814770354204e-15,
+            "is_significant_adj_05": true
+          },
+          "M3_vs_M2": {
+            "mean_loss_diff_nats": 0.070973,
+            "hac_variance": 1.021991,
+            "dm_statistic_hln": 3.027,
+            "raw_p_value": 0.0024700978625812704,
+            "holm_adjusted_p_value": 0.0024700978625812704,
+            "is_significant_adj_05": true
+          }
+        },
+        "lag_16": {
+          "M3_vs_M1": {
+            "mean_loss_diff_nats": 0.194528,
+            "hac_variance": 0.557921,
+            "dm_statistic_hln": 11.2289,
+            "raw_p_value": 2.94258581732452e-29,
+            "holm_adjusted_p_value": 8.82775745197356e-29,
+            "is_significant_adj_05": true
+          },
+          "M2_vs_M1": {
+            "mean_loss_diff_nats": 0.123555,
+            "hac_variance": 0.426265,
+            "dm_statistic_hln": 8.1594,
+            "raw_p_value": 3.365807759026216e-16,
+            "holm_adjusted_p_value": 6.731615518052432e-16,
+            "is_significant_adj_05": true
+          },
+          "M3_vs_M2": {
+            "mean_loss_diff_nats": 0.070973,
+            "hac_variance": 1.037453,
+            "dm_statistic_hln": 3.0043,
+            "raw_p_value": 0.0026615753290236753,
+            "holm_adjusted_p_value": 0.0026615753290236753,
+            "is_significant_adj_05": true
+          }
+        }
+      }
+    }
+  }
+}
